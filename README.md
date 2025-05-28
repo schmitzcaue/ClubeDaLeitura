@@ -1,6 +1,3 @@
-📚 README.md – Sistema de Empréstimo de Revistas
-Este projeto implementa um sistema de gerenciamento de empréstimos de revistas, com funcionalidades para cadastro de amigos, caixas, revistas e empréstimos, utilizando ASP.NET Core MVC e Entity Framework Core.
-
 🛠️ Tecnologias Utilizadas
 ASP.NET Core MVC: Framework para desenvolvimento de aplicações web seguindo o padrão Model-View-Controller.
 
