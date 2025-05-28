@@ -1,16 +1,15 @@
-﻿using System.Net.Mail;
-using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-public class Revista : EntidadeBase
+public class Amigo : EntidadeBase
 {
     public string nome;
     public string numeroDeEdicao;
     public string anoDePublicao;
     internal int titulo;
 
-    public Revista(string nome, string nomeResponsavel, string telefone)
+    public Amigo(string nome, string nomeResponsavel, string telefone)
     {
         this.nome = nome;
         this.numeroDeEdicao = nomeResponsavel;
@@ -44,7 +43,7 @@ public class Revista : EntidadeBase
 
     public override void AtualizarRegistro(EntidadeBase registroAtualizado)
     {
-        Revista AmigoAtualizado = (Revista)registroAtualizado;
+        Amigo AmigoAtualizado = (Amigo)registroAtualizado;
 
         this.nome = AmigoAtualizado.nome;
         this.numeroDeEdicao = AmigoAtualizado.numeroDeEdicao;

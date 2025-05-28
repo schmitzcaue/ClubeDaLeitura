@@ -10,17 +10,17 @@ public class TelaPrincipal
 
     private ModuloRevista.RepositorioAmigo RepositorioAmigo;
     private ModuloCaixa.RepositorioCaixa RepositorioCaixa;
-    private RepositorioRevista RepositorioRevista;
+    private RepositorioEmprestimo RepositorioRevista;
 
     private TelaAmigo telaAmigo;
     private TelaCaixa telaCaixa;
-    private TelaRevista telaRevista;
+    private TelaEmprestimo telaRevista;
 
     public TelaPrincipal()
     {
         RepositorioAmigo = new ModuloRevista.RepositorioAmigo();
         RepositorioCaixa = new ModuloCaixa.RepositorioCaixa();
-        RepositorioRevista = new RepositorioRevista();
+        RepositorioRevista = new RepositorioEmprestimo();
 
         telaAmigo = new TelaAmigo(RepositorioAmigo);
         telaCaixa = new TelaCaixa(RepositorioCaixa);

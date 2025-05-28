@@ -30,7 +30,7 @@ public class TelaAmigo : TelaBase
 
         for (int i = 0; i < amigo.Length; i++)
         {
-            Revista A = (Revista)amigo[i];
+            Amigo A = (Amigo)amigo[i];
 
             if (A == null)
                 continue;
@@ -44,7 +44,7 @@ public class TelaAmigo : TelaBase
         Console.ReadLine();
     }
 
-    protected override Revista ObterDados()
+    protected override Amigo ObterDados()
     {
         Console.Write("Digite o nome do Amigo: ");
         string nome = Console.ReadLine();
@@ -55,7 +55,7 @@ public class TelaAmigo : TelaBase
         Console.Write("Digite o telefone do Amigo: ");
         string telefone = Console.ReadLine();
 
-        Revista amigo = new Revista(nome, nomeResponsavel, telefone);
+        Amigo amigo = new Amigo(nome, nomeResponsavel, telefone);
 
         return amigo;
     }
