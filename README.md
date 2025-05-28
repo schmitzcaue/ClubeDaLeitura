@@ -1,14 +1,3 @@
-🛠️ Tecnologias Utilizadas
-ASP.NET Core MVC: Framework para desenvolvimento de aplicações web seguindo o padrão Model-View-Controller.
-
-Entity Framework Core: ORM para acesso a dados e manipulação do banco de dados.
-
-SQL Server: Sistema de gerenciamento de banco de dados relacional.
-
-Razor Pages: Motor de templates para renderização de views.
-
-
-
 📋 Funcionalidades
 1. Módulo de Amigos
 Cadastro: Inserção de novos amigos com validação de nome, responsável e telefone.
