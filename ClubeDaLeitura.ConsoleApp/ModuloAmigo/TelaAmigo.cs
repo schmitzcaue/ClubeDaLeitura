@@ -4,9 +4,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
 public class TelaAmigo : TelaBase
 {
-    private RepositorioAmigo repositorioAmigo;
+    private RepositorioCaixa repositorioAmigo;
 
-    public TelaAmigo(RepositorioAmigo repositorioAmigo)
+    public TelaAmigo(RepositorioCaixa repositorioAmigo)
         : base("Amigo", repositorioAmigo)
     {
         this.repositorioAmigo = repositorioAmigo;
@@ -37,7 +37,7 @@ public class TelaAmigo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                A.id, A.cor, A.etiqueta, A.telefone
+                A.id, A.nome, A.nomeResponsavel, A.telefone
             );
         }
 

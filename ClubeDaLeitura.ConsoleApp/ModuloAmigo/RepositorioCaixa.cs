@@ -2,5 +2,5 @@
 
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
-public class RepositorioAmigo : RepositorioBase;
+public class RepositorioCaixa : RepositorioBase;
     

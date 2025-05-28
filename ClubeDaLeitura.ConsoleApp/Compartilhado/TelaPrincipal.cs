@@ -8,8 +8,8 @@ public class TelaPrincipal
 {
     private char opcaoEscolhida;
 
-    private RepositorioAmigo RepositorioAmigo;
-    private RepositorioCaixa RepositorioCaixa;
+    private ModuloAmigo.RepositorioCaixa RepositorioAmigo;
+    private ModuloCaixa.RepositorioCaixa RepositorioCaixa;
     private RepositorioRevista RepositorioRevista;
 
     private TelaAmigo telaAmigo;
@@ -18,11 +18,12 @@ public class TelaPrincipal
 
     public TelaPrincipal()
     {
-        RepositorioAmigo = new RepositorioAmigo();
-        RepositorioCaixa = new RepositorioCaixa();
+        RepositorioAmigo = new ModuloAmigo.RepositorioCaixa();
+        RepositorioCaixa = new ModuloCaixa.RepositorioCaixa();
         RepositorioRevista = new RepositorioRevista();
 
         telaAmigo = new TelaAmigo(RepositorioAmigo);
+        telaCaixa = new TelaCaixa(RepositorioCaixa);
 
        
     }
