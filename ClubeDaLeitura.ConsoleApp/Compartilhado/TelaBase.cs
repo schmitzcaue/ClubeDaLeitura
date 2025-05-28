@@ -1,6 +1,6 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.ModuloAmigo;
+﻿using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
-namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 public abstract class TelaBase
 {

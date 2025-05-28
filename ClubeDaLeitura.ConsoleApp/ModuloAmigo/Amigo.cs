@@ -1,10 +1,10 @@
 ﻿using System.Net.Mail;
-using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
-namespace ClubeDaLeitura.ConsoleApp.Amigo;
+namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
-    public class Amigo : EntidadeBase
-    {
+public class Amigo : EntidadeBase
+{
     public string nome;
     public string nomeResponsavel;
     public string telefone;

@@ -1,4 +1,4 @@
-﻿namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 public abstract class EntidadeBase
 {

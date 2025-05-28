@@ -1,4 +1,4 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
 namespace ClubeDaLeitura.ConsoleApp
 {

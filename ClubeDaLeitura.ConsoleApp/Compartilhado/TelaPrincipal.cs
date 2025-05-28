@@ -1,6 +1,6 @@
 ﻿using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
-using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+//using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -12,24 +12,19 @@ public class TelaPrincipal
     private RepositorioCaixa RepositorioCaixa;
     private RepositorioRevista RepositorioRevista;
 
-    private RepositorioAmigo repositorioAmigo;
-    private TelaEquipamento telaEquipamento;
-    private TelaChamado telaChamado;
+    private TelaAmigo telaAmigo;
+    private TelaCaixa telaCaixa;
+    private TelaRevista telaRevista;
 
     public TelaPrincipal()
     {
         RepositorioAmigo = new RepositorioAmigo();
         RepositorioCaixa = new RepositorioCaixa();
-        RepositorioCaixa = new RepositorioRevista();
+        RepositorioRevista = new RepositorioRevista();
 
-        repositorioAmigo = new TelaAmigo(repositorioFabricante);
+        telaAmigo = new TelaAmigo(RepositorioAmigo);
 
-        telaEquipamento = new TelaEquipamento(
-            repositorioEquipamento,
-            repositorioFabricante
-        );
-
-        telaChamado = new TelaChamado(repositorioChamado, repositorioEquipamento);
+       
     }
 
     public void ApresentarMenuPrincipal()
@@ -42,9 +37,9 @@ public class TelaPrincipal
 
         Console.WriteLine();
 
-        Console.WriteLine("1 - Controle de Equipamentos");
-        Console.WriteLine("2 - Controle de Chamados");
-        Console.WriteLine("3 - Controle de Fabricantes");
+        Console.WriteLine("1 - Controle de Amigos");
+        Console.WriteLine("2 - Controle de Caixas");
+        Console.WriteLine("3 - Controle de Revistas");
         Console.WriteLine("S - Sair");
 
         Console.WriteLine();
@@ -56,13 +51,13 @@ public class TelaPrincipal
     public TelaBase ObterTela()
     {
         if (opcaoEscolhida == '1')
-            return telaEquipamento;
+            return telaAmigo;
 
         else if (opcaoEscolhida == '2')
-            return telaChamado;
+            return  telaCaixa;
 
         else if (opcaoEscolhida == '3')
-            return repositorioAmigo;
+            return telaRevista;
 
         return null;
     }
