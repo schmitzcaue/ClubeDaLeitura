@@ -1,4 +1,4 @@
-﻿using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
+﻿using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 //using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
@@ -8,7 +8,7 @@ public class TelaPrincipal
 {
     private char opcaoEscolhida;
 
-    private ModuloAmigo.RepositorioCaixa RepositorioAmigo;
+    private ModuloRevista.RepositorioAmigo RepositorioAmigo;
     private ModuloCaixa.RepositorioCaixa RepositorioCaixa;
     private RepositorioRevista RepositorioRevista;
 
@@ -18,7 +18,7 @@ public class TelaPrincipal
 
     public TelaPrincipal()
     {
-        RepositorioAmigo = new ModuloAmigo.RepositorioCaixa();
+        RepositorioAmigo = new ModuloRevista.RepositorioAmigo();
         RepositorioCaixa = new ModuloCaixa.RepositorioCaixa();
         RepositorioRevista = new RepositorioRevista();
 

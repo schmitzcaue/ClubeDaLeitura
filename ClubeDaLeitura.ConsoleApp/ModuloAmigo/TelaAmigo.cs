@@ -1,12 +1,12 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
-namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
+namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 public class TelaAmigo : TelaBase
 {
-    private RepositorioCaixa repositorioAmigo;
+    private RepositorioAmigo repositorioAmigo;
 
-    public TelaAmigo(RepositorioCaixa repositorioAmigo)
+    public TelaAmigo(RepositorioAmigo repositorioAmigo)
         : base("Amigo", repositorioAmigo)
     {
         this.repositorioAmigo = repositorioAmigo;
@@ -30,21 +30,21 @@ public class TelaAmigo : TelaBase
 
         for (int i = 0; i < amigo.Length; i++)
         {
-            Amigo A = (Amigo)amigo[i];
+            Revista A = (Revista)amigo[i];
 
             if (A == null)
                 continue;
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                A.id, A.nome, A.nomeResponsavel, A.telefone
+                A.id, A.nome, A.numeroDeEdicao, A.anoDePublicao
             );
         }
 
         Console.ReadLine();
     }
 
-    protected override Amigo ObterDados()
+    protected override Revista ObterDados()
     {
         Console.Write("Digite o nome do Amigo: ");
         string nome = Console.ReadLine();
@@ -55,7 +55,7 @@ public class TelaAmigo : TelaBase
         Console.Write("Digite o telefone do Amigo: ");
         string telefone = Console.ReadLine();
 
-        Amigo amigo = new Amigo(nome, nomeResponsavel, telefone);
+        Revista amigo = new Revista(nome, nomeResponsavel, telefone);
 
         return amigo;
     }

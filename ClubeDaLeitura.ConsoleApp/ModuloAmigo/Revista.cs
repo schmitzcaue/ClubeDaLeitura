@@ -1,19 +1,20 @@
 ﻿using System.Net.Mail;
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 
-namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
+namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-public class Amigo : EntidadeBase
+public class Revista : EntidadeBase
 {
     public string nome;
-    public string nomeResponsavel;
-    public string telefone;
+    public string numeroDeEdicao;
+    public string anoDePublicao;
+    internal int titulo;
 
-    public Amigo(string nome, string nomeResponsavel, string telefone)
+    public Revista(string nome, string nomeResponsavel, string telefone)
     {
         this.nome = nome;
-        this.nomeResponsavel = nomeResponsavel;
-        this.telefone = telefone;
+        this.numeroDeEdicao = nomeResponsavel;
+        this.anoDePublicao = telefone;
     }
 
     public override string Validar()
@@ -26,16 +27,16 @@ public class Amigo : EntidadeBase
         else if (nome.Length < 4 || nome.Length > 99)
             erros += "O nome deve conter entre 3 e 100 caracteres!\n";
 
-        if (string.IsNullOrWhiteSpace(nomeResponsavel))
+        if (string.IsNullOrWhiteSpace(numeroDeEdicao))
             erros += "O nome do Responsavel é obrigatório!\n";
 
-        else if (nomeResponsavel.Length < 4 || nomeResponsavel.Length > 99)
+        else if (numeroDeEdicao.Length < 4 || numeroDeEdicao.Length > 99)
             erros += "O nome do responsavel deve conter entre 3 e 100 caracteres!\n";
 
-        if (string.IsNullOrWhiteSpace(telefone))
+        if (string.IsNullOrWhiteSpace(anoDePublicao))
             erros += "O telefone é obrigatório!\n";
 
-        else if (telefone.Length < 9)
+        else if (anoDePublicao.Length < 9)
             erros += "O telefone deve conter no mínimo 9 caracteres!\n";
 
         return erros;
@@ -43,10 +44,10 @@ public class Amigo : EntidadeBase
 
     public override void AtualizarRegistro(EntidadeBase registroAtualizado)
     {
-        Amigo AmigoAtualizado = (Amigo)registroAtualizado;
+        Revista AmigoAtualizado = (Revista)registroAtualizado;
 
         this.nome = AmigoAtualizado.nome;
-        this.nomeResponsavel = AmigoAtualizado.nomeResponsavel;
-        this.telefone = AmigoAtualizado.telefone;
+        this.numeroDeEdicao = AmigoAtualizado.numeroDeEdicao;
+        this.anoDePublicao = AmigoAtualizado.anoDePublicao;
     }
 }
