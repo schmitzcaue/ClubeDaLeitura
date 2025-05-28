@@ -5,14 +5,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
 public class Amigo : EntidadeBase
 {
-    public string nome;
-    public string nomeResponsavel;
+    public string cor;
+    public string etiqueta;
     public string telefone;
 
     public Amigo(string nome, string nomeResponsavel, string telefone)
     {
-        this.nome = nome;
-        this.nomeResponsavel = nomeResponsavel;
+        this.cor = nome;
+        this.etiqueta = nomeResponsavel;
         this.telefone = telefone;
     }
 
@@ -20,16 +20,16 @@ public class Amigo : EntidadeBase
     {
         string erros = "";
 
-        if (string.IsNullOrWhiteSpace(nome))
+        if (string.IsNullOrWhiteSpace(cor))
             erros += "O nome é obrigatório!\n";
 
-        else if (nome.Length < 4 || nome.Length > 99)
+        else if (cor.Length < 4 || cor.Length > 99)
             erros += "O nome deve conter entre 3 e 100 caracteres!\n";
 
-        if (string.IsNullOrWhiteSpace(nomeResponsavel))
+        if (string.IsNullOrWhiteSpace(etiqueta))
             erros += "O nome do Responsavel é obrigatório!\n";
 
-        else if (nomeResponsavel.Length < 4 || nomeResponsavel.Length > 99)
+        else if (etiqueta.Length < 4 || etiqueta.Length > 99)
             erros += "O nome do responsavel deve conter entre 3 e 100 caracteres!\n";
 
         if (string.IsNullOrWhiteSpace(telefone))
@@ -45,8 +45,8 @@ public class Amigo : EntidadeBase
     {
         Amigo AmigoAtualizado = (Amigo)registroAtualizado;
 
-        this.nome = AmigoAtualizado.nome;
-        this.nomeResponsavel = AmigoAtualizado.nomeResponsavel;
+        this.cor = AmigoAtualizado.cor;
+        this.etiqueta = AmigoAtualizado.etiqueta;
         this.telefone = AmigoAtualizado.telefone;
     }
 }
