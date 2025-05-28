@@ -3,11 +3,11 @@ using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-public class TelaEmprestimo : TelaBase
+public class TelaRevista : TelaBase
 {
-    private RepositorioAmigo repositorioRevista;
+    private RepositorioRevista repositorioRevista;
 
-    public TelaEmprestimo(RepositorioEmprestimo repositorioRevista)
+    public TelaRevista(RepositorioRevista repositorioRevista)
         : base("Revista", repositorioRevista)
     {
         this.repositorioRevista = this.repositorioRevista;

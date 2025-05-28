@@ -2,6 +2,6 @@
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-    public class RepositorioEmprestimo : RepositorioBase
+    public class RepositorioRevista : RepositorioBase
     {
     }
