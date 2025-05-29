@@ -1,16 +1,30 @@
-﻿namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-    public class Revista : EntidadeBase
+namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+
+    public  class Revista : EntidadeBase //Não tenho ideia o prq não reconhece kk
     {
     public string titulo;
     public string numeroDeEdicao;
     public string anoDePublicao;
+    Caixa caixa;
 
-    public Revista(string titulo, string etiqueta, string anoDePublicao) //Caixa caixa) faltando implementar a dependencia da caixa
+    public Revista(string titulo, string numeroDeEdicao, string anoDePublicao, Caixa caixa) 
+    {
+        this.titulo = titulo;
+        this.numeroDeEdicao = this.numeroDeEdicao;
+        this.anoDePublicao = anoDePublicao;
+        this.caixa = caixa;
+    }
+     
+    public Revista(string? titulo, string? numeroDeEdicao, string? anoDePublicao)
     {
         this.titulo = titulo;
         this.numeroDeEdicao = numeroDeEdicao;
         this.anoDePublicao = anoDePublicao;
+        this.caixa = caixa;
+          
     }
 
     public override string Validar()
@@ -34,15 +48,19 @@
         else if (anoDePublicao.Length < 6 || anoDePublicao.Length > 8)
             erros += "O  ano de publicação deve ter uma data válida!\n";
 
+        if (caixa == null)
+            erros += "Caixa está vazia";
+
         return erros;
     }
 
-    public override void AtualizarRegistro(EntidadeBase registroAtualizado)
-    {
-        Revista RevistaAtualizada = (Revista)registroAtualizado;
+    //public override void AtualizarRegistro(EntidadeBase registroAtualizado)
+    //{
+    //    Revista RevistaAtualizada = (Revista)registroAtualizado;
 
-        this.titulo = RevistaAtualizada.titulo;
-        this.numeroDeEdicao = RevistaAtualizada.numeroDeEdicao;
-        this.anoDePublicao = RevistaAtualizada.anoDePublicao;
-    }
+        
+    //    this.titulo = RevistaAtualizada.titulo;
+    //    this.numeroDeEdicao = RevistaAtualizada.numeroDeEdicao;
+    //    this.anoDePublicao = RevistaAtualizada.anoDePublicao;
+    //}
 }

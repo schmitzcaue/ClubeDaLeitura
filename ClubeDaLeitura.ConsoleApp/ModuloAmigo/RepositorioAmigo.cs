@@ -1,4 +1,4 @@
-﻿namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
+﻿namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 

@@ -1,6 +1,7 @@
-﻿using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+﻿using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
-//using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -8,22 +9,27 @@ public class TelaPrincipal
 {
     private char opcaoEscolhida;
 
-    private ModuloRevista.RepositorioAmigo RepositorioAmigo;
+    private ModuloAmigo.RepositorioAmigo RepositorioAmigo;
     private ModuloCaixa.RepositorioCaixa RepositorioCaixa;
-    private RepositorioEmprestimo RepositorioRevista;
+    private ModuloRevista.RepositorioRevista RepositorioRevista;
+    private ModuloEmprestimo.RepositorioEmprestimo RepositorioEmprestimo;
 
     private TelaAmigo telaAmigo;
     private TelaCaixa telaCaixa;
-    private TelaEmprestimo telaRevista;
+    private TelaRevista telaRevista;
+   // private TelaEmprestimo telaEmprestimo;
 
     public TelaPrincipal()
     {
-        RepositorioAmigo = new ModuloRevista.RepositorioAmigo();
-        RepositorioCaixa = new ModuloCaixa.RepositorioCaixa();
-        RepositorioRevista = new RepositorioEmprestimo();
+        RepositorioAmigo = new RepositorioAmigo();
+        RepositorioCaixa = new RepositorioCaixa();
+        RepositorioRevista = new RepositorioRevista();
+        RepositorioEmprestimo = new RepositorioEmprestimo();
 
         telaAmigo = new TelaAmigo(RepositorioAmigo);
         telaCaixa = new TelaCaixa(RepositorioCaixa);
+        telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
+        //telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo);
 
        
     }

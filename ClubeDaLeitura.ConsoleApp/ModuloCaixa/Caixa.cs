@@ -1,7 +1,7 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
-namespace ClubeDaLeitura.ConsoleApp.Caixa;
+namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
     public class Caixa : EntidadeBase
     {
@@ -27,12 +27,12 @@ namespace ClubeDaLeitura.ConsoleApp.Caixa;
         else if (etiqueta.Length < 4 || etiqueta.Length > 51)
             erros += "A Etiqueta deve conter entre 3 e 50 caracteres!\n";
 
-        //??
+       
         if (string.IsNullOrWhiteSpace(cor))
             erros += "A cor é obrigatória!\n";
         else if (cor.Length < 4 || cor.Length > 99)
             erros += "A cor é obrigatória!\n";
-        //?? falta implementar
+       
 
 
         if (string.IsNullOrWhiteSpace(diasDeEmprestimo))

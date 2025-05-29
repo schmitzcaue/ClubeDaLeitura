@@ -1,16 +1,17 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 public class TelaRevista : TelaBase
 {
     private RepositorioRevista repositorioRevista;
+    private RepositorioCaixa repositorioCaixa;
 
-    public TelaRevista(RepositorioRevista repositorioRevista)
-        : base("Revista", repositorioRevista)
+    public TelaRevista(RepositorioRevista repositorioRevista, RepositorioCaixa repositorioCaixa) : base("Revista", repositorioRevista)
     {
         this.repositorioRevista = this.repositorioRevista;
+        this.repositorioCaixa = this.repositorioCaixa;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -31,7 +32,7 @@ public class TelaRevista : TelaBase
 
         for (int i = 0; i < revista.Length; i++)
         {
-            Amigo R = (Amigo)revista[i];
+            Revista R = (Revista)revista[i];
 
             if (R == null)
                 continue;
@@ -45,8 +46,41 @@ public class TelaRevista : TelaBase
         Console.ReadLine();
     }
 
-    protected override Amigo ObterDados()
+    public void VisualizarCaixas()
     {
+        Console.WriteLine();
+
+        Console.WriteLine("Visualização de Caixas");
+
+        Console.WriteLine();
+
+        Console.WriteLine(
+            "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+            "Id", "Eiqueta", "Cor", "Dias de empréstimo"
+        );
+
+        EntidadeBase[] caixa = repositorioCaixa.SelecionarRegistros();
+
+        for (int i = 0; i < caixa.Length; i++)
+        {
+            Caixa C = (Caixa)caixa[i];
+
+            if (C == null)
+                continue;
+
+            Console.WriteLine(
+               "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+                C.id, C.etiqueta, C.cor, C.diasDeEmprestimo
+            );
+        }
+
+        Console.ReadLine();
+    }
+
+
+    protected override Revista ObterDados()
+    {
+       
         Console.Write("Digite o nome do Amigo: ");
         string titulo = Console.ReadLine();
 
@@ -56,7 +90,16 @@ public class TelaRevista : TelaBase
         Console.Write("Digite o telefone do Amigo: ");
         string anoDePublicao = Console.ReadLine();
 
-        Amigo revista = new Amigo(titulo, numeroDeEdicao, anoDePublicao);
+        VisualizarCaixas();
+
+        Console.Write("Digite o id da Caixa: ");
+        int idCaixa = Convert.ToInt32(Console.ReadLine());
+
+
+        Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
+
+        //Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao);
+        Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao);
 
         return revista;
     }
