@@ -7,9 +7,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
     {
     public string cor;
     public string etiqueta;
-    public string diasDeEmprestimo;
+    public int diasDeEmprestimo;
 
-    public Caixa(string nome, string etiqueta, string diasDeEmprestimo)
+    public Caixa(string nome, string etiqueta, int diasDeEmprestimo)
     {
         this.cor = nome;
         this.etiqueta = etiqueta;
@@ -35,11 +35,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
        
 
 
-        if (string.IsNullOrWhiteSpace(diasDeEmprestimo))
-            erros += "O telefone é obrigatório!\n";
-
-        else if (diasDeEmprestimo.Length < 6 || diasDeEmprestimo.Length > 8)
-            erros += "O dias de empréstimo deve conter 7 caracteres!\n";
+       if (diasDeEmprestimo != 7 )
+            erros += "O dias de empréstimo deve conter 7 dias!\n";
         
         return erros;
     }

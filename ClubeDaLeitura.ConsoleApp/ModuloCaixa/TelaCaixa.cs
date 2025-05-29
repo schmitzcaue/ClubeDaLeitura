@@ -54,7 +54,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         string cor = Console.ReadLine();
 
         Console.Write("Digite o tempo do empréstimo: ");
-        string diasDeEmprestimo = Console.ReadLine();
+        int diasDeEmprestimo = Convert.ToInt32 (Console.ReadLine());
 
         Caixa caixa = new Caixa(etiqueta, cor, diasDeEmprestimo);
 

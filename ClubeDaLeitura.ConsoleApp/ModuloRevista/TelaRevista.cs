@@ -10,8 +10,8 @@ public class TelaRevista : TelaBase
 
     public TelaRevista(RepositorioRevista repositorioRevista, RepositorioCaixa repositorioCaixa) : base("Revista", repositorioRevista)
     {
-        this.repositorioRevista = this.repositorioRevista;
-        this.repositorioCaixa = this.repositorioCaixa;
+        this.repositorioRevista = repositorioRevista;
+        this.repositorioCaixa = repositorioCaixa;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -81,14 +81,14 @@ public class TelaRevista : TelaBase
     protected override Revista ObterDados()
     {
        
-        Console.Write("Digite o nome do Amigo: ");
+        Console.Write("Digite o título: ");
         string titulo = Console.ReadLine();
 
-        Console.Write("Digite o nome do responsável pelo Amigo: ");
-        string numeroDeEdicao = Console.ReadLine();
+        Console.Write("Digite o numero da Edição: ");
+        int numeroDeEdicao = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Digite o telefone do Amigo: ");
-        string anoDePublicao = Console.ReadLine();
+        Console.Write("Digite o ano de publicação: ");
+        DateTime anoDePublicao = DateTime.Parse(Console.ReadLine());
 
         VisualizarCaixas();
 
@@ -99,7 +99,7 @@ public class TelaRevista : TelaBase
         Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
 
         //Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao);
-        Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao);
+        Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao, CaixaSelecionado);
 
         return revista;
     }

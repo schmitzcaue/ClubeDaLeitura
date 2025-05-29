@@ -1,8 +1,8 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
-using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+﻿//using ClubeDaLeitura.ConsoleApp.Compartilhado;
+//using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+//using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+//namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 //public class TelaEmprestimo : TelaBase
 //{
@@ -46,18 +46,18 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 //        Console.ReadLine();
 //    }
 
-//    //protected override Emprestimo ObterDados()
-//    //{
-//    //    TelaAmigo
+//    protected override Emprestimo ObterDados()
+//    {
+//        TelaAmigo
 
-//    //     Console.Write("Digite a data do emprestimo: ");
-//    //    string dataEmprestimo = Console.ReadLine();
+//         Console.Write("Digite a data do emprestimo: ");
+//        string dataEmprestimo = Console.ReadLine();
 
-//    //     Console.Write("Digite a data de devolução: ");
-//    //    string dataDevolucao = Console.ReadLine();
-       
-//    //    Emprestimo emprestimo = new Emprestimo(amigo, revista, dataEmprestimo);
+//        Console.Write("Digite a data de devolução: ");
+//        string dataDevolucao = Console.ReadLine();
 
-//    //    return Emprestimo;
-//    //}
+//        Emprestimo emprestimo = new Emprestimo(amigo, revista, dataEmprestimo);
+
+//        return Emprestimo;
+//    }
 //}

@@ -17,7 +17,7 @@ public class TelaPrincipal
     private TelaAmigo telaAmigo;
     private TelaCaixa telaCaixa;
     private TelaRevista telaRevista;
-   // private TelaEmprestimo telaEmprestimo;
+    private TelaEmprestimo telaEmprestimo;
 
     public TelaPrincipal()
     {
@@ -29,7 +29,7 @@ public class TelaPrincipal
         telaAmigo = new TelaAmigo(RepositorioAmigo);
         telaCaixa = new TelaCaixa(RepositorioCaixa);
         telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
-        //telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo);
+        telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
 
        
     }
