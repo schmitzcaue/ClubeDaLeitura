@@ -8,7 +8,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
     public string titulo;
     public int numeroDeEdicao;
     public DateTime anoDePublicao;
-    Caixa caixa;
+    public Caixa caixa;
 
     public Revista(string titulo, int numeroDeEdicao, DateTime anoDePublicao, Caixa caixa) 
     {
