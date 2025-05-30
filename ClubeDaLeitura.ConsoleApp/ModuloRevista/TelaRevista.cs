@@ -1,5 +1,6 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
@@ -14,6 +15,24 @@ public class TelaRevista : TelaBase
         this.repositorioCaixa = repositorioCaixa;
     }
 
+    public override char ApresentarMenu()
+    {
+        ExibirCabecalho();
+
+        Console.WriteLine($"1 - Cadastro de {nomeEntidade}");
+        Console.WriteLine($"2 - Visualizar {nomeEntidade}s");
+        Console.WriteLine($"3 - Edição {nomeEntidade}s");
+        Console.WriteLine($"4 - Excluir {nomeEntidade}");
+        Console.WriteLine($"S - Sair");
+
+        Console.WriteLine();
+
+        Console.Write("Digite uma opção válida: ");
+        char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
+
+        return opcaoEscolhida;
+    }
+
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
@@ -24,8 +43,8 @@ public class TelaRevista : TelaBase
         Console.WriteLine();
 
         Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-            "Id", "titulo", "Nome do responsável", "Telefone"
+            "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
+            "Id", "titulo", "Nome do responsável", "Telefone", "status"
         );
 
         EntidadeBase[] revista = repositorioRevista.SelecionarRegistros();
@@ -38,8 +57,8 @@ public class TelaRevista : TelaBase
                 continue;
 
             Console.WriteLine(
-               "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                R.id, R.titulo, R.numeroDeEdicao, R.anoDePublicao
+               "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
+                R.id, R.titulo, R.numeroDeEdicao, R.anoDePublicao, R.status
             );
         }
 
@@ -98,7 +117,6 @@ public class TelaRevista : TelaBase
 
         Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);
 
-        //Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao);
         Revista revista = new Revista(titulo, numeroDeEdicao, anoDePublicao, CaixaSelecionado);
 
         return revista;

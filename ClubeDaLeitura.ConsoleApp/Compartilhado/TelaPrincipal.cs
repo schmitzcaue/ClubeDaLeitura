@@ -17,7 +17,7 @@ public class TelaPrincipal
     private TelaAmigo telaAmigo;
     private TelaCaixa telaCaixa;
     private TelaRevista telaRevista;
-   // private TelaEmprestimo telaEmprestimo;
+    private TelaEmprestimo telaEmprestimo;
 
     public TelaPrincipal()
     {
@@ -29,7 +29,7 @@ public class TelaPrincipal
         telaAmigo = new TelaAmigo(RepositorioAmigo);
         telaCaixa = new TelaCaixa(RepositorioCaixa);
         telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
-        //telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
+        telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
 
        
     }
@@ -47,6 +47,7 @@ public class TelaPrincipal
         Console.WriteLine("1 - Controle de Amigos");
         Console.WriteLine("2 - Controle de Caixas");
         Console.WriteLine("3 - Controle de Revistas");
+        Console.WriteLine("4 - Controle de Emprestimo");
         Console.WriteLine("S - Sair");
 
         Console.WriteLine();
@@ -65,6 +66,9 @@ public class TelaPrincipal
 
         else if (opcaoEscolhida == '3')
             return telaRevista;
+
+        else if (opcaoEscolhida == '4')
+            return telaEmprestimo;
 
         return null;
     }

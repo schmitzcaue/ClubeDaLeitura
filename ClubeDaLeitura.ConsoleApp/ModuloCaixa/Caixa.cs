@@ -24,7 +24,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         if (string.IsNullOrWhiteSpace(etiqueta))
             erros += "A Etiqueta é obrigatória!\n";
 
-        else if (etiqueta.Length < 4 || etiqueta.Length > 51)
+        else if (etiqueta.Length < 3 || etiqueta.Length > 51)
             erros += "A Etiqueta deve conter entre 3 e 50 caracteres!\n";
 
        
@@ -36,7 +36,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
 
        if (diasDeEmprestimo != 7 )
-            erros += "O dias de empréstimo deve conter 7 dias!\n";
+            erros += "Dias de empréstimo deve conter 7 dias!\n";
         
         return erros;
     }
