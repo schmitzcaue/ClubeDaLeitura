@@ -9,35 +9,49 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
     public class Revista : EntidadeBase 
     {
-    public string titulo;
-    public int numeroDeEdicao;
-    public DateTime anoDePublicao;
-    public Caixa caixa;
-    public string status;
+    public string Titulo { get; set; }
+    public int NumeroDeEdicao { get; set; }
+    public DateTime AnoDePublicao { get; set; }
+    public Caixa Caixa { get; set; }
+
+    public string status { get; set; }
 
     public Revista(string titulo, int numeroDeEdicao, DateTime anoDePublicao, Caixa caixa) 
     {
-        this.titulo = titulo;
-        this.numeroDeEdicao = numeroDeEdicao;
-        this.anoDePublicao = anoDePublicao;
-        this.caixa = caixa;
+       Titulo = titulo;
+       NumeroDeEdicao = numeroDeEdicao;
+       AnoDePublicao = anoDePublicao;
+       Caixa = caixa;
+
+        status = "Disponível";
+    }
+
+    public override void AtualizarRegistro(EntidadeBase registroAtualizado)
+    {
+        Revista revistaAtualizada = (Revista)registroAtualizado;
+
+
+        Titulo = revistaAtualizada.Titulo;
+        NumeroDeEdicao = revistaAtualizada.NumeroDeEdicao;
+        AnoDePublicao = revistaAtualizada.AnoDePublicao;
+        Caixa = revistaAtualizada.Caixa;
     }
     public override string Validar()
     {
         string erros = "";
 
-        if (string.IsNullOrWhiteSpace(titulo))
+        if (string.IsNullOrWhiteSpace(Titulo))
             erros += "O titulo é obrigatório!\n";
-        else if (titulo.Length < 2 || titulo.Length > 101)
-            erros += "A titulo é obrigatório!\n";
+        else if (Titulo.Length < 2 || Titulo.Length > 101)
+            erros += "O titulo deve conter entre 2 e 100 caracteres!\n";
 
-        else if (numeroDeEdicao < 0 || numeroDeEdicao > 51)
+        else if (NumeroDeEdicao < 0 )
             erros += "O numero da edição deve ser positivo!\n";
 
-        else if (anoDePublicao > DateTime.Now)
+        else if (AnoDePublicao > DateTime.Now)
             erros += "O ano de publicação deve ter uma data válida!\n";
 
-        if (caixa == null)
+        if (Caixa == null)
             erros += "Caixa está vazia";
 
         if (status == null)
@@ -46,13 +60,6 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
         return erros;
     }
 
-    public override void AtualizarRegistro(EntidadeBase registroAtualizado)
-    {
-        Revista RevistaAtualizada = (Revista)registroAtualizado;
 
-
-        this.titulo = RevistaAtualizada.titulo;
-        this.numeroDeEdicao = RevistaAtualizada.numeroDeEdicao;
-        this.anoDePublicao = RevistaAtualizada.anoDePublicao;
-    }
+   
 }

@@ -6,12 +6,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 public class TelaRevista : TelaBase
 {
-    private RepositorioRevista repositorioRevista;
     private RepositorioCaixa repositorioCaixa;
 
     public TelaRevista(RepositorioRevista repositorioRevista, RepositorioCaixa repositorioCaixa) : base("Revista", repositorioRevista)
     {
-        this.repositorioRevista = repositorioRevista;
         this.repositorioCaixa = repositorioCaixa;
     }
 
@@ -43,22 +41,22 @@ public class TelaRevista : TelaBase
         Console.WriteLine();
 
         Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
-            "Id", "titulo", "Nome do responsável", "Telefone", "status"
+            "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
+            "Id", "Título", "Edição", "Ano de Publicação", "Caixa", "Status"
         );
 
-        EntidadeBase[] revista = repositorioRevista.SelecionarRegistros();
+        EntidadeBase[] revistas = repositorio.SelecionarRegistros();
 
-        for (int i = 0; i < revista.Length; i++)
+        for (int i = 0; i < revistas.Length; i++)
         {
-            Revista R = (Revista)revista[i];
+            Revista r = (Revista)revistas[i];
 
-            if (R == null)
+            if (r == null)
                 continue;
 
             Console.WriteLine(
-               "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
-                R.id, R.titulo, R.numeroDeEdicao, R.anoDePublicao, R.status
+             "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
+                r.id, r.Titulo, r.NumeroDeEdicao, r.AnoDePublicao, r.Caixa.Etiqueta, r.status
             );
         }
 
@@ -89,7 +87,7 @@ public class TelaRevista : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                C.id, C.etiqueta, C.cor, C.diasDeEmprestimo
+                C.id, C.Etiqueta, C.Cor, C.DiasEmprestimo
             );
         }
 

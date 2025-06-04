@@ -4,12 +4,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 
 public class TelaAmigo : TelaBase
 {
-    private RepositorioAmigo repositorioAmigo;
-
-    public TelaAmigo(RepositorioAmigo repositorioAmigo)
-        : base("Amigo", repositorioAmigo)
+    public TelaAmigo(RepositorioAmigo repositorioAmigo) : base("Amigo", repositorioAmigo)
     {
-        this.repositorioAmigo = repositorioAmigo;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -26,7 +22,7 @@ public class TelaAmigo : TelaBase
             "Id", "Nome", "Nome do responsável", "Telefone"
         );
 
-        EntidadeBase[] amigo = repositorioAmigo.SelecionarRegistros();
+        EntidadeBase[] amigo = repositorio.SelecionarRegistros();
 
         for (int i = 0; i < amigo.Length; i++)
         {
@@ -37,7 +33,7 @@ public class TelaAmigo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                A.id, A.nome, A.numeroDeEdicao, A.anoDePublicao
+                A.id, A.Nome, A.NomeResponsavel, A.Telefone
             );
         }
 

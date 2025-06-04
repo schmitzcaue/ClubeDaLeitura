@@ -66,7 +66,7 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                A.id, A.nome, A.numeroDeEdicao, A.anoDePublicao
+                A.id, A.Nome, A.NomeResponsavel, A.Telefone
             );
         }
 
@@ -96,7 +96,7 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
-                R.id, R.titulo, R.numeroDeEdicao, R.anoDePublicao, R.status
+                R.id, R.Titulo, R.NumeroDeEdicao, R.AnoDePublicao, R.status
             );
         }
 
@@ -128,7 +128,7 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15} | {3, -15}",
-                R.id, R.amigo.nome, R.revista.titulo, R.dataEmprestimo.ToShortDateString(), R.dataDevolucao.ToShortDateString()
+                R.id, R.amigo.Nome, R.revista.Titulo, R.dataEmprestimo.ToShortDateString(), R.dataDevolucao.ToShortDateString()
             );
         }
 
@@ -147,12 +147,27 @@ public class TelaEmprestimo : TelaBase
 
         emprestimoSelecionado.revista.status = "Disponível";
 
-        EntidadeBase registroAtualizado = ObterDados();
-
-        Console.WriteLine($"Devolução cadastrado com sucesso!");
+        Console.WriteLine($"Devolução realizada com sucesso!");
         Console.ReadLine();
 
     }
+
+    //public void CadastrarReserva()
+    //{
+    //    VisualizarRegistros(false);
+
+    //    Console.Write("Digite o id do emprestimo: ");
+    //    int IdEmprestimo = Convert.ToInt32(Console.ReadLine());
+    //    Emprestimo emprestimoSelecionado = (Emprestimo)repositorioEmprestimo.SelecionarRegistroPorId(IdEmprestimo);
+
+    //    emprestimoSelecionado.dataDevolucao = DateTime.Now;
+
+    //    emprestimoSelecionado.revista.Status = "Disponível";
+
+    //    Console.WriteLine($"Emprestimo realizada com sucesso!");
+    //    Console.ReadLine();
+
+    //}
 
     protected override Emprestimo ObterDados()
     {
@@ -161,24 +176,15 @@ public class TelaEmprestimo : TelaBase
         int IdAmigo = Convert.ToInt32(Console.ReadLine());
         Amigo amigoSelecionado = (Amigo)repositorioAmigo.SelecionarRegistroPorId(IdAmigo);
 
-
         VisualizarRevistas();
         Console.Write("Digite o id da revista: ");
         int IdRevista = Convert.ToInt32(Console.ReadLine());
         Revista revistaSelecionado = (Revista)repositorioRevista.SelecionarRegistroPorId(IdRevista);
 
-       
-        Emprestimo emprestimo = new Emprestimo(amigoSelecionado,revistaSelecionado);
-        revistaSelecionado.status = "Emprestada";
+        Console.WriteLine("Digite a data da reserva");
+        DateTime dataEmprestimo = Convert.ToDateTime( Console.ReadLine());
 
-        //VisualizarRegistros();
-        //Console.Write("Digite o id do emprestimo: ");
-        //int IdEmprestimo = Convert.ToInt32(Console.ReadLine());
-        //Emprestimo emprestimoSelecionado = (Emprestimo)repositorioEmprestimo.SelecionarRegistroPorId(IdEmprestimo);
-
-
-        //Devolucao devolucao = new Devolucao(amigoSelecionado, revistaSelecionado);
-        //revistaSelecionado.status = "Disponível";
+        Emprestimo emprestimo = new Emprestimo(amigoSelecionado, revistaSelecionado, dataEmprestimo);
 
         return emprestimo;
     }

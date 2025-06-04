@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.Design;
 using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
@@ -13,20 +14,24 @@ public class Emprestimo : EntidadeBase
     public DateTime dataEmprestimo;
     public DateTime dataDevolucao;
 
-    public Emprestimo(Amigo amigo, Revista revista)
+    public Emprestimo(Amigo amigo, Revista revista ,DateTime dataEmprestimo)
     {
         this.amigo = amigo;
         this.revista = revista;
-        this.dataEmprestimo = DateTime.Now;
-        this.dataDevolucao = dataEmprestimo.AddDays(revista.caixa.diasDeEmprestimo);
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataEmprestimo.AddDays(revista.Caixa.DiasEmprestimo);
+
+
+        if (dataEmprestimo > DateTime.Now)
+            revista.status = "Reservada";
+        else
+        revista.status = "Emprestada";
     }
     public override string Validar()
     {
         string erros = "";
 
-        if (dataEmprestimo > DateTime.Now)
-            erros += "O campo \"Data de Emprestimo\" deve conter uma data passada.\n";
-
+       
         if (amigo == null)
             erros += "Amigo está vazio";
 
@@ -40,4 +45,6 @@ public class Emprestimo : EntidadeBase
     {
         return;
     }
+
+    
 }

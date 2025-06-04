@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp
 {
@@ -22,7 +23,32 @@ namespace ClubeDaLeitura.ConsoleApp
                 if (opcaoEscolhida == 'S')
                     break;
 
-                switch (opcaoEscolhida)
+                if (telaEscolhida is TelaEmprestimo)
+                {
+                    TelaEmprestimo telaEmprestimo = (TelaEmprestimo)telaEscolhida;
+                    switch (opcaoEscolhida)
+                    {
+                        case '1':
+                            telaEmprestimo.CadastrarRegistro();
+                            break;
+
+                        case '2':
+                            telaEmprestimo.VisualizarRegistros(true);
+                            break;
+
+                        case '3':
+                            telaEmprestimo.ExcluirRegistro();
+                            break;
+
+                        case '4':
+                            telaEmprestimo.CadastrarDevolucao();
+                            break;
+                    }
+
+
+                }
+
+                else switch (opcaoEscolhida)
                 {
                     case '1':
                         telaEscolhida.CadastrarRegistro();
