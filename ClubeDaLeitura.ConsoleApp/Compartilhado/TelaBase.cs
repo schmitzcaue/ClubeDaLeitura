@@ -1,4 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.ModuloRevista;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -17,7 +18,8 @@ public abstract class TelaBase
     {
         Console.Clear();
         ExibirCabecalho();
-
+        
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine($"1 - Cadastro de {nomeEntidade}");
         Console.WriteLine($"2 - Visualizar {nomeEntidade}s");
         Console.WriteLine($"3 - Editar {nomeEntidade}");
@@ -28,7 +30,7 @@ public abstract class TelaBase
 
         Console.Write("Digite uma opção válida: ");
         char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
-
+        Console.ResetColor();
         return opcaoEscolhida;
     }
 
@@ -36,8 +38,9 @@ public abstract class TelaBase
     {
         Console.Clear();
         ExibirCabecalho();
-
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.ResetColor();
 
         Console.WriteLine();
 
@@ -107,7 +110,7 @@ public abstract class TelaBase
         Console.ReadLine();
     }
 
-    public void ExcluirRegistro()
+    public virtual void ExcluirRegistro()
     {
         ExibirCabecalho();
 
@@ -140,8 +143,13 @@ public abstract class TelaBase
     protected void ExibirCabecalho()
     {
         Console.Clear();
-        Console.WriteLine($"Gestão de {nomeEntidade}s");
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"             Gestão de {nomeEntidade}s");
+        Console.WriteLine("------------------------------------------");
+
         Console.WriteLine();
+        Console.ResetColor();
     }
 
     protected abstract EntidadeBase ObterDados();

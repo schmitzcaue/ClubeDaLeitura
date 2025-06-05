@@ -1,5 +1,7 @@
-﻿namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
+namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 public abstract class RepositorioBase
 {
     public EntidadeBase[] registros = new EntidadeBase[100];
@@ -61,5 +63,19 @@ public abstract class RepositorioBase
         }
 
         return null;
+
     }
+    public bool ExistemEmprestimosDoAmigo(int idAmigo)
+        {
+            EntidadeBase[] registros = SelecionarRegistros();
+
+            foreach (EntidadeBase registro in registros)
+            {
+                if (registro is Emprestimo emprestimo && emprestimo.amigo != null && emprestimo.amigo.Id == idAmigo)
+                    return true;
+            }
+
+            return false;
+        }
+
 }

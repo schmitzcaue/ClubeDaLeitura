@@ -29,7 +29,7 @@ public class TelaPrincipal
         RepositorioEmprestimo = new RepositorioEmprestimo();
         RepositorioReserva = new RepositorioReserva();
 
-        telaAmigo = new TelaAmigo(RepositorioAmigo);
+        telaAmigo = new TelaAmigo(RepositorioAmigo, RepositorioEmprestimo);
         telaCaixa = new TelaCaixa(RepositorioCaixa);
         telaRevista = new TelaRevista(RepositorioRevista, RepositorioCaixa);
         telaEmprestimo = new TelaEmprestimo(RepositorioEmprestimo, RepositorioAmigo, RepositorioRevista);
@@ -40,13 +40,14 @@ public class TelaPrincipal
     public void ApresentarMenuPrincipal()
     {
         Console.Clear();
-
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         Console.WriteLine("----------------------------------------");
         Console.WriteLine("|        Clube da leitura              |");
         Console.WriteLine("----------------------------------------");
+        Console.ResetColor();
 
         Console.WriteLine();
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("1 - Controle de Amigos");
         Console.WriteLine("2 - Controle de Caixas");
         Console.WriteLine("3 - Controle de Revistas");
@@ -55,9 +56,12 @@ public class TelaPrincipal
         Console.WriteLine("S - Sair");
         Console.ResetColor();
 
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine();
         Console.Write("Escolha uma das opções: ");
         opcaoEscolhida = Console.ReadLine()[0];
+        Console.ResetColor();
+
     }
 
     public TelaBase ObterTela()
