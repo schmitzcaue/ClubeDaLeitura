@@ -1,44 +1,43 @@
-📋 Funcionalidades
-1. Módulo de Amigos
-Cadastro: Inserção de novos amigos com validação de nome, responsável e telefone.
+## 📋 Funcionalidades
+### Módulo de Amigos
+- **Cadastro:** Inserção de novos amigos com validação de nome, responsável e telefone.
 
-Edição: Alteração de dados dos amigos cadastrados.
+- **Edição:** Alteração de dados dos amigos cadastrados.
 
-Exclusão: Remoção de amigos (caso não possuam empréstimos ativos).
+- **Exclusão:** Remoção de amigos (caso não possuam empréstimos ativos).
 
-Visualização: Listagem de amigos e seus respectivos empréstimos.
+- **Visualização:** Listagem de amigos e seus respectivos empréstimos.
 
 
 
-2. Módulo de Caixas
-Cadastro: Criação de novas caixas com etiqueta, cor e dias de empréstimo.
+### Módulo de Caixas
+- **Cadastro:** Criação de novas caixas com etiqueta, cor e dias de empréstimo.
 
-Edição: Modificação de informações das caixas existentes.
+- **Edição:** Modificação de informações das caixas existentes.
 
-Exclusão: Remoção de caixas (caso não possuam revistas vinculadas).
+- **Exclusão:** Remoção de caixas (caso não possuam revistas vinculadas).
 
-Visualização: Exibição de todas as caixas cadastradas.
+- **Visualização:** Exibição de todas as caixas cadastradas.
 Microsoft Learn
 
 
 
-3. Módulo de Revistas
-Cadastro: Inserção de revistas com título, edição, ano de publicação e caixa associada.
+### Módulo de Revistas
+- **Cadastro:** Inserção de revistas com título, edição, ano de publicação e caixa associada.
 
-Edição: Alteração de dados das revistas cadastradas.
+- **Edição:** Alteração de dados das revistas cadastradas.
 
-Exclusão: Remoção de revistas (caso não possuam empréstimos ativos).
+- **Exclusão:** Remoção de revistas (caso não possuam empréstimos ativos).
 
-Visualização: Listagem de revistas com status atual (Disponível/Emprestada/Reservada).
+- **Visualização:** Listagem de revistas com status atual (Disponível/Emprestada/Reservada).
 
 
+### Módulo de Empréstimos
+- **Registro:** Cadastro de novos empréstimos com amigo, revista, data de empréstimo e data de devolução.
 
-4. Módulo de Empréstimos
-Registro: Cadastro de novos empréstimos com amigo, revista, data de empréstimo e data de devolução.
+- **Devolução:** Registro de devoluções de revistas emprestadas.
 
-Devolução: Registro de devoluções de revistas emprestadas.
-
-Visualização: Exibição de empréstimos abertos e fechados, com destaque para os atrasados.
+- **Visualização:** Exibição de empréstimos abertos e fechados, com destaque para os atrasados.
 
 ## Autor SCHMITZ.CAUE
 
