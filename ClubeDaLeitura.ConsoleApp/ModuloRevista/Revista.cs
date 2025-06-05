@@ -59,7 +59,4 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
         return erros;
     }
-
-
-   
 }

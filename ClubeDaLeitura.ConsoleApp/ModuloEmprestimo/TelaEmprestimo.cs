@@ -3,12 +3,8 @@ using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
-//O sistema deve permitir registrar devoluções
-//O sistema deve permitir visualizar empréstimos abertos e fechados
 
-//Status possíveis: Aberto / Concluído / Atrasado
 //● Cada amigo só pode ter um empréstimo ativo por vez
-//● Empréstimos atrasados devem ser destacados visualmente
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
@@ -28,6 +24,7 @@ public class TelaEmprestimo : TelaBase
     public override char ApresentarMenu()
     {
         ExibirCabecalho();
+
 
         Console.WriteLine($"1 - Cadastro de {nomeEntidade}");
         Console.WriteLine($"2 - Visualizar {nomeEntidade}s");
@@ -66,11 +63,12 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                A.id, A.Nome, A.NomeResponsavel, A.Telefone
+                A.Id, A.Nome, A.NomeResponsavel, A.Telefone
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
+
     }
     public void VisualizarRevistas()
     {
@@ -96,10 +94,10 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}| {4, -15}",
-                R.id, R.Titulo, R.NumeroDeEdicao, R.AnoDePublicao, R.status
+                R.Id, R.Titulo, R.NumeroDeEdicao, R.AnoDePublicao, R.status
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
 
@@ -128,10 +126,10 @@ public class TelaEmprestimo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15} | {3, -15}",
-                R.id, R.amigo.Nome, R.revista.Titulo, R.dataEmprestimo.ToShortDateString(), R.dataDevolucao.ToShortDateString()
+                R.Id, R.amigo.Nome, R.revista.Titulo, R.dataEmprestimo.ToShortDateString(), R.dataDevolucao.ToShortDateString()
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
 
@@ -148,26 +146,11 @@ public class TelaEmprestimo : TelaBase
         emprestimoSelecionado.revista.status = "Disponível";
 
         Console.WriteLine($"Devolução realizada com sucesso!");
+        Console.Write("\nDigite ENTER para continuar...");
+
         Console.ReadLine();
 
     }
-
-    //public void CadastrarReserva()
-    //{
-    //    VisualizarRegistros(false);
-
-    //    Console.Write("Digite o id do emprestimo: ");
-    //    int IdEmprestimo = Convert.ToInt32(Console.ReadLine());
-    //    Emprestimo emprestimoSelecionado = (Emprestimo)repositorioEmprestimo.SelecionarRegistroPorId(IdEmprestimo);
-
-    //    emprestimoSelecionado.dataDevolucao = DateTime.Now;
-
-    //    emprestimoSelecionado.revista.Status = "Disponível";
-
-    //    Console.WriteLine($"Emprestimo realizada com sucesso!");
-    //    Console.ReadLine();
-
-    //}
 
     protected override Emprestimo ObterDados()
     {
@@ -175,11 +158,13 @@ public class TelaEmprestimo : TelaBase
         Console.Write("Digite o id do amigo: ");
         int IdAmigo = Convert.ToInt32(Console.ReadLine());
         Amigo amigoSelecionado = (Amigo)repositorioAmigo.SelecionarRegistroPorId(IdAmigo);
+        Console.Write("\nDigite ENTER para continuar...");
 
         VisualizarRevistas();
         Console.Write("Digite o id da revista: ");
         int IdRevista = Convert.ToInt32(Console.ReadLine());
         Revista revistaSelecionado = (Revista)repositorioRevista.SelecionarRegistroPorId(IdRevista);
+        Console.Write("\nDigite ENTER para continuar...");
 
         Console.WriteLine("Digite a data da reserva");
         DateTime dataEmprestimo = Convert.ToDateTime( Console.ReadLine());

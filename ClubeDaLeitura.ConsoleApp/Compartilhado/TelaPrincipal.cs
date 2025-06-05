@@ -42,20 +42,20 @@ public class TelaPrincipal
         Console.Clear();
 
         Console.WriteLine("----------------------------------------");
-        Console.WriteLine("|        Gestão de Equipamentos        |");
+        Console.WriteLine("|        Clube da leitura              |");
         Console.WriteLine("----------------------------------------");
 
         Console.WriteLine();
-
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine("1 - Controle de Amigos");
         Console.WriteLine("2 - Controle de Caixas");
         Console.WriteLine("3 - Controle de Revistas");
         Console.WriteLine("4 - Controle de Emprestimo");
         Console.WriteLine("5 - Controle de Reservas");
         Console.WriteLine("S - Sair");
+        Console.ResetColor();
 
         Console.WriteLine();
-
         Console.Write("Escolha uma das opções: ");
         opcaoEscolhida = Console.ReadLine()[0];
     }

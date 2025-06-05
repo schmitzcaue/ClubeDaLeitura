@@ -11,6 +11,107 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
     {
     }
 
+    public override void CadastrarRegistro()
+    {
+        Console.Clear();
+        ExibirCabecalho();
+
+        Console.Write("------------------------------------------");
+        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.Write("------------------------------------------");
+
+        Console.WriteLine();
+
+        Caixa novoRegistro = (Caixa)ObterDados();
+
+        string erros = novoRegistro.Validar();
+
+        if (erros.Length > 0)
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(erros);
+            Console.ResetColor();
+
+            Console.Write("\nDigite ENTER para continuar...");
+            Console.ReadLine();
+
+            CadastrarRegistro();
+
+            return;
+        }
+
+        EntidadeBase[] registros = repositorio.SelecionarRegistros();
+
+        for (int i = 0; i < registros.Length; i++)
+        {
+            Caixa caixaRegistrado = (Caixa)registros[i];
+
+            if (caixaRegistrado == null)
+                continue;
+
+            if (caixaRegistrado.Etiqueta == novoRegistro.Etiqueta)
+            {
+
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Uma etiqueta com este nome já foi cadastrada!");
+                Console.ResetColor();
+
+                Console.Write("\nDigite ENTER para continuar...");
+                Console.ReadLine();
+
+                CadastrarRegistro();
+                return;
+            }
+        }
+
+        repositorio.CadastrarRegistro(novoRegistro);
+
+        Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+        Console.Write("\nDigite ENTER para continuar...");
+        Console.ReadLine();
+    }
+
+    public override void EditarRegistro()
+    {
+        ExibirCabecalho();
+
+        Console.WriteLine($"Edição de {nomeEntidade}");
+
+        Console.WriteLine();
+
+        VisualizarRegistros(false);
+
+        Console.Write("Digite o id do registro que deseja selecionar: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine();
+
+        Caixa registroAtualizado = (Caixa)ObterDados();
+
+        string erros = registroAtualizado.Validar();
+
+        if (erros.Length > 0)
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(erros);
+            Console.ResetColor();
+
+            Console.Write("\nDigite ENTER para continuar...");
+            Console.ReadLine();
+
+            EditarRegistro();
+
+            return;
+        }
+    }
+
+
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
@@ -36,10 +137,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                C.id, C.Etiqueta, C.Cor, C.DiasEmprestimo
+                C.Id, C.Etiqueta, C.Cor, C.DiasEmprestimo
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
 

@@ -15,6 +15,7 @@ public abstract class TelaBase
 
     public virtual char ApresentarMenu()
     {
+        Console.Clear();
         ExibirCabecalho();
 
         Console.WriteLine($"1 - Cadastro de {nomeEntidade}");
@@ -31,8 +32,9 @@ public abstract class TelaBase
         return opcaoEscolhida;
     }
 
-    public void CadastrarRegistro()
+    public virtual void CadastrarRegistro()
     {
+        Console.Clear();
         ExibirCabecalho();
 
         Console.WriteLine($"Cadastro de {nomeEntidade}");
@@ -60,12 +62,21 @@ public abstract class TelaBase
         }
 
         repositorio.CadastrarRegistro(novoRegistro);
-
+        Console.Clear();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
         Console.ReadLine();
+
     }
 
-    public void EditarRegistro()
+    public virtual void EditarRegistro()
     {
         ExibirCabecalho();
 
@@ -84,7 +95,15 @@ public abstract class TelaBase
 
         repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
+
+        Console.Clear();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
     }
 
@@ -105,7 +124,14 @@ public abstract class TelaBase
 
         repositorio.ExcluirRegistro(idSelecionado);
 
+        Console.Clear();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
     }
 

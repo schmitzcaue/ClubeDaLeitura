@@ -9,11 +9,17 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
     public string Cor { get; set; }
     public int DiasEmprestimo { get; set; }
 
-    public Caixa(string etiqueta, string cor, int diasEmprestimo)
+    public Caixa(string etiqueta, string cor)
     {
         Etiqueta = etiqueta;
         Cor = cor;
         DiasEmprestimo = 7;
+    }
+    public Caixa(string etiqueta, string cor, int diasEmprestimo)
+    {
+        Etiqueta = etiqueta;
+        Cor = cor;
+        DiasEmprestimo = diasEmprestimo;
     }
     public override void AtualizarRegistro(EntidadeBase registroAtualizado)
     {

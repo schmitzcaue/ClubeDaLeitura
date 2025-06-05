@@ -36,7 +36,9 @@ public class TelaRevista : TelaBase
         if (exibirCabecalho == true)
             ExibirCabecalho();
 
-        Console.WriteLine("Visualização de Revistas");
+        Console.Write("------------------------------------------");
+        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.Write("------------------------------------------");
 
         Console.WriteLine();
 
@@ -56,15 +58,16 @@ public class TelaRevista : TelaBase
 
             Console.WriteLine(
              "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
-                r.id, r.Titulo, r.NumeroDeEdicao, r.AnoDePublicao, r.Caixa.Etiqueta, r.status
+                r.Id, r.Titulo, r.NumeroDeEdicao, r.AnoDePublicao, r.Caixa.Etiqueta, r.status
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
 
     public void VisualizarCaixas()
     {
+        Console.Clear();
         Console.WriteLine();
 
         Console.WriteLine("Visualização de Caixas");
@@ -87,10 +90,10 @@ public class TelaRevista : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-                C.id, C.Etiqueta, C.Cor, C.DiasEmprestimo
+                C.Id, C.Etiqueta, C.Cor, C.DiasEmprestimo
             );
         }
-
+        Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
 
@@ -111,6 +114,7 @@ public class TelaRevista : TelaBase
 
         Console.Write("Digite o id da Caixa: ");
         int idCaixa = Convert.ToInt32(Console.ReadLine());
+        Console.Write("\nDigite ENTER para continuar...");
 
 
         Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);

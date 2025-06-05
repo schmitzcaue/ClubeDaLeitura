@@ -41,17 +41,4 @@ public class Amigo : EntidadeBase
 
         return erros;
     }
-
-    //public bool RegistroExiste(RepositorioBase repositorio, EntidadeBase registro)
-    //{
-    //    RepositorioAmigo repositorioAmigo = (RepositorioAmigo)repositorio;
-    //    Amigo Amigo = (Amigo)registro;
-
-    //    for (int i = 0; i < repositorioAmigo.registros.Length; i++)
-    //    {
-    //        if (Amigo.Nome == repositorioAmigo.registros[Nome])
-    //    }
-
-    
-
 }
