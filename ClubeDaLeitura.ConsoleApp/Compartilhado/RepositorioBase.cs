@@ -78,4 +78,17 @@ public abstract class RepositorioBase
             return false;
         }
 
+    public bool ExistemRevistasVinculadas(int idRevista)
+    {
+        EntidadeBase[] registros = SelecionarRegistros();
+
+        foreach (EntidadeBase registro in registros)
+        {
+            if (registro is Revista revista && revista.Caixa != null && revista.Caixa.Id == idRevista)
+                return true;
+        }
+
+        return false;
+    }
+
 }

@@ -241,7 +241,7 @@ public class TelaAmigo : TelaBase
     }
     protected override Amigo ObterDados()
     {
-        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.Write("Digite o nome do Amigo: ");
         string nome = Console.ReadLine();
         Console.WriteLine("------------------------------------------");

@@ -1,14 +1,18 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
+using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
  public class TelaCaixa : TelaBase
 {
+    private RepositorioRevista repositorioRevista;
 
-    public TelaCaixa(RepositorioCaixa repositorioAmigo)
+    public TelaCaixa(RepositorioCaixa repositorioAmigo, RepositorioRevista repositorioRevista)
         : base ("Caixa", repositorioAmigo)
     {
+        this.repositorioRevista = repositorioRevista;
     }
 
     public override void CadastrarRegistro()
@@ -16,7 +20,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         Console.Clear();
         ExibirCabecalho();
 
-        Console.Write("------------------------------------------");
+        Console.WriteLine("------------------------------------------");
         Console.WriteLine($"Cadastro de {nomeEntidade}");
         Console.Write("------------------------------------------");
 
@@ -143,6 +147,46 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         Console.Write("\nDigite ENTER para continuar...");
         Console.ReadLine();
     }
+    public override void ExcluirRegistro()
+        {
+            ExibirCabecalho();
+
+    Console.WriteLine($"Exclusão de {nomeEntidade}");
+            Console.WriteLine();
+
+             VisualizarRegistros(false);
+
+    Console.Write("\nDigite o id do amigo que deseja excluir: ");
+            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+    // Verificar se há revistas vinculados
+    bool temRevistas = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
+
+            if (temRevistas)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
+                Console.ResetColor();
+                Console.ReadLine();
+                return;
+            }
+
+            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
+
+            if (conseguiuExcluir)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+            }
+            else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
+        }
+
+            Console.ResetColor();
+            Console.ReadLine();
+       }
 
     protected override Caixa ObterDados()
     {
