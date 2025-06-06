@@ -1,4 +1,5 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using System;
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
@@ -38,6 +39,62 @@ public class TelaEmprestimo : TelaBase
         char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
 
         return opcaoEscolhida;
+    }
+
+    public override void CadastrarRegistro()
+    {
+        Console.Clear();
+        ExibirCabecalho();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.ResetColor();
+
+        Console.WriteLine();
+
+        Emprestimo novoRegistro = ObterDados();
+
+        string erros = novoRegistro.Validar();
+
+        if (erros.Length > 0)
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(erros);
+            Console.ResetColor();
+
+            Console.Write("\nDigite ENTER para continuar...");
+            Console.ReadLine();
+
+            CadastrarRegistro();
+
+            return;
+        }
+
+        bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(novoRegistro.amigo.Id);
+
+            if (temEmprestimos)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode adquirir outro.");
+            Console.ResetColor();
+            Console.ReadLine();
+            return;
+        }
+
+        repositorio.CadastrarRegistro(novoRegistro);
+        Console.Clear();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.ResetColor();
+        Console.Write("------------------------------------------");
+        Console.ReadLine();
+
     }
     public  void VisualizarAmigo()
     {
@@ -158,15 +215,15 @@ public class TelaEmprestimo : TelaBase
         Console.Write("Digite o id do amigo: ");
         int IdAmigo = Convert.ToInt32(Console.ReadLine());
         Amigo amigoSelecionado = (Amigo)repositorioAmigo.SelecionarRegistroPorId(IdAmigo);
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.Clear();
 
         VisualizarRevistas();
         Console.Write("Digite o id da revista: ");
         int IdRevista = Convert.ToInt32(Console.ReadLine());
         Revista revistaSelecionado = (Revista)repositorioRevista.SelecionarRegistroPorId(IdRevista);
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.Clear();
 
-        Console.WriteLine("Digite a data da reserva");
+        Console.WriteLine("Digite a data do emprestimo");
         DateTime dataEmprestimo = Convert.ToDateTime( Console.ReadLine());
 
         Emprestimo emprestimo = new Emprestimo(amigoSelecionado, revistaSelecionado, dataEmprestimo);

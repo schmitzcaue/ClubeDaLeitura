@@ -7,7 +7,7 @@ public abstract class RepositorioBase
     public EntidadeBase[] registros = new EntidadeBase[100];
     private int contadorRegistros = 0;
 
-    public void CadastrarRegistro(EntidadeBase novoRegistro)
+    public virtual void CadastrarRegistro(EntidadeBase novoRegistro)
     {
         registros[contadorRegistros] = novoRegistro;
 
@@ -65,30 +65,5 @@ public abstract class RepositorioBase
         return null;
 
     }
-    public bool ExistemEmprestimosDoAmigo(int idAmigo)
-        {
-            EntidadeBase[] registros = SelecionarRegistros();
-
-            foreach (EntidadeBase registro in registros)
-            {
-                if (registro is Emprestimo emprestimo && emprestimo.amigo != null && emprestimo.amigo.Id == idAmigo)
-                    return true;
-            }
-
-            return false;
-        }
-
-    public bool ExistemRevistasVinculadas(int idRevista)
-    {
-        EntidadeBase[] registros = SelecionarRegistros();
-
-        foreach (EntidadeBase registro in registros)
-        {
-            if (registro is Revista revista && revista.Caixa != null && revista.Caixa.Id == idRevista)
-                return true;
-        }
-
-        return false;
-    }
-
+   
 }

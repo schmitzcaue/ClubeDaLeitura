@@ -180,7 +180,7 @@ public class TelaAmigo : TelaBase
 
 
         // Verificar se há empréstimos vinculados
-        bool temEmprestimos = repositorioEmprestimo.ExistemEmprestimosDoAmigo(idSelecionado);
+        bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
 
         if (temEmprestimos)
         {
