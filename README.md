@@ -1,5 +1,5 @@
-## 📋 Funcionalidades
-![](.gif)
+## 📋 Clube da leitura
+![](https://imgur.com/AC6YjHs.gif)
 ### Módulo de Amigos
 - **Cadastro:** Inserção de novos amigos com validação de nome, responsável e telefone.
 
