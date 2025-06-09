@@ -4,10 +4,10 @@ using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 public abstract class RepositorioBase
 {
-    public EntidadeBase[] registros = new EntidadeBase[100];
-    private int contadorRegistros = 0;
+    protected EntidadeBase[] registros = new EntidadeBase[100];
+    protected  int contadorRegistros = 0;
 
-    public virtual void CadastrarRegistro(EntidadeBase novoRegistro)
+    public void CadastrarRegistro(EntidadeBase novoRegistro)
     {
         registros[contadorRegistros] = novoRegistro;
 

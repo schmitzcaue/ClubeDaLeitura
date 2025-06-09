@@ -15,10 +15,10 @@ public class TelaAmigo : TelaBase
 
     public override void CadastrarRegistro()
     {
-        ExibirCabecalho();
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         Console.WriteLine("------------------------------------------");
-        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.WriteLine($"             Cadastro de {nomeEntidade}");
         Console.Write("------------------------------------------");
         Console.ResetColor();
 
@@ -72,32 +72,37 @@ public class TelaAmigo : TelaBase
         repositorio.CadastrarRegistro(novoRegistro);
 
         Console.Clear();
-        Console.Write("------------------------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("------------------------------------------");
         Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
-        Console.ResetColor();
         Console.Write("------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("\nDigite ENTER para continuar...");
-        Console.ResetColor();
         Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
     }
-
     public override void EditarRegistro()
     {
-        ExibirCabecalho();
-
-        Console.WriteLine($"Edição de {nomeEntidade}");
-
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"            Edição de {nomeEntidade}");
+        Console.WriteLine("------------------------------------------");
+        Console.ResetColor();
         Console.WriteLine();
 
         VisualizarRegistros(false);
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
 
+        Console.Clear();
+        Console.WriteLine();
         Console.Write("Digite o id do registro que deseja selecionar: ");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine();
+        Console.Clear();
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"            Edição de {nomeEntidade}");
+        Console.WriteLine("------------------------------------------");
+        Console.ResetColor();
 
         Amigo registroAtualizado = (Amigo)ObterDados();
 
@@ -156,64 +161,71 @@ public class TelaAmigo : TelaBase
         repositorio.EditarRegistro(idSelecionado, registroAtualizado);
 
         Console.Clear();
-        Console.Write("------------------------------------------");
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
-        Console.ResetColor();
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"{nomeEntidade} editado com sucesso!");
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
         Console.Write("------------------------------------------");
-        Console.WriteLine("\nDigite ENTER para continuar...");
-        Console.Write("------------------------------------------");
-        Console.ReadLine();
-    }
-    public override void ExcluirRegistro()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine($"Exclusão de {nomeEntidade}");
-
         Console.WriteLine();
 
-        VisualizarRegistros(false);
-
-        Console.Write("Digite o id do registro que deseja selecionar: ");
-        int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-
-        // Verificar se há empréstimos vinculados
-        bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
-
-        if (temEmprestimos)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
-            Console.ResetColor();
-            Console.ReadLine();
-            return;
-        }
-
-        bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
-
-        Console.WriteLine();
-
-        repositorio.ExcluirRegistro(idSelecionado);
-
-        Console.Clear();
-        Console.Write("------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
         Console.ResetColor();
-        Console.Write("------------------------------------------");
-        Console.WriteLine("\nDigite ENTER para continuar...");
-        Console.Write("------------------------------------------");
         Console.ReadLine();
     }
+    //public override void ExcluirRegistro()
+    //{
+    //    ExibirCabecalho();
 
+    //    Console.Write("------------------------------------------");
+    //    Console.WriteLine($"Exclusão de {nomeEntidade}");
+    //    Console.Write("------------------------------------------");
+
+
+    //    Console.WriteLine();
+
+    //    VisualizarRegistros(false);
+
+    //    Console.Write("Digite o id do registro que deseja selecionar: ");
+    //    int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+
+    //    bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
+
+    //    if (temEmprestimos)
+    //    {
+    //        Console.ForegroundColor = ConsoleColor.Red;
+    //        Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
+    //        Console.ResetColor();
+    //        Console.ReadLine();
+    //        return;
+    //    }
+
+    //    bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
+
+    //    Console.WriteLine();
+
+    //    repositorio.ExcluirRegistro(idSelecionado);
+
+    //    Console.Clear();
+    //    Console.Write("------------------------------------------");
+    //    Console.ForegroundColor = ConsoleColor.Red;
+    //    Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+    //    Console.ResetColor();
+    //    Console.Write("------------------------------------------");
+    //    Console.WriteLine("\nDigite ENTER para continuar...");
+    //    Console.Write("------------------------------------------");
+    //    Console.ReadLine();
+    //}
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
             ExibirCabecalho();
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("         Visualização de Amigos");
+        Console.WriteLine("------------------------------------------");
 
-        Console.WriteLine("Visualização de Amigos");
 
         Console.WriteLine();
 
@@ -236,12 +248,16 @@ public class TelaAmigo : TelaBase
                 A.Id, A.Nome, A.NomeResponsavel, A.Telefone
             );
         }
-
+        Console.WriteLine();
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
     }
     protected override Amigo ObterDados()
     {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("Digite o nome do Amigo: ");
         string nome = Console.ReadLine();
         Console.WriteLine("------------------------------------------");

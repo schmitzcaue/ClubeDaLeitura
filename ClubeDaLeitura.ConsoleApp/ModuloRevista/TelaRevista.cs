@@ -7,12 +7,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista;
 public class TelaRevista : TelaBase
 {
     private RepositorioCaixa repositorioCaixa;
-
     public TelaRevista(RepositorioRevista repositorioRevista, RepositorioCaixa repositorioCaixa) : base("Revista", repositorioRevista)
     {
         this.repositorioCaixa = repositorioCaixa;
     }
-
     public override char ApresentarMenu()
     {
         ExibirCabecalho();
@@ -30,20 +28,22 @@ public class TelaRevista : TelaBase
 
         return opcaoEscolhida;
     }
-
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
-            ExibirCabecalho();
 
-        Console.Write("------------------------------------------");
-        Console.WriteLine($"Cadastro de {nomeEntidade}");
-        Console.Write("------------------------------------------");
 
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"          Visualização de {nomeEntidade}");
+        Console.WriteLine("------------------------------------------");
         Console.WriteLine();
 
+
+
         Console.WriteLine(
-            "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
+            "{0, -5} | {1, -20} | {2, -10} | {3, -20} | {4, -20} | {5, -20}",
             "Id", "Título", "Edição", "Ano de Publicação", "Caixa", "Status"
         );
 
@@ -57,20 +57,25 @@ public class TelaRevista : TelaBase
                 continue;
 
             Console.WriteLine(
-             "{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -20} | {5, -20}",
-                r.Id, r.Titulo, r.NumeroDeEdicao, r.AnoDePublicao, r.Caixa.Etiqueta, r.status
+             "{0, -5} | {1, -20} | {2, -10} | {3, -20} | {4, -20} | {5, -20}",
+                r.Id, r.Titulo, r.NumeroDeEdicao, r.AnoDePublicao, r.Caixa.Etiqueta, r.Status
             );
         }
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.WriteLine();
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("     Digite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
-    }
+        Console.ResetColor();
 
+    }
     public void VisualizarCaixas()
     {
         Console.Clear();
-        Console.WriteLine();
-
-        Console.WriteLine("Visualização de Caixas");
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("         Visualização de Caixas");
+        Console.WriteLine("------------------------------------------");
 
         Console.WriteLine();
 
@@ -93,28 +98,36 @@ public class TelaRevista : TelaBase
                 C.Id, C.Etiqueta, C.Cor, C.DiasEmprestimo
             );
         }
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.WriteLine();
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
     }
-
-
     protected override Revista ObterDados()
     {
        
         Console.Write("Digite o título: ");
         string titulo = Console.ReadLine();
+        Console.WriteLine("------------------------------------------");
 
         Console.Write("Digite o numero da Edição: ");
         int numeroDeEdicao = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("------------------------------------------");
 
-        Console.Write("Digite o ano de publicação: ");
+        Console.Write("Digite a data de publicação: ");
         DateTime anoDePublicao = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("------------------------------------------");
 
         VisualizarCaixas();
 
         Console.Write("Digite o id da Caixa: ");
         int idCaixa = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("------------------------------------------");
         Console.Write("\nDigite ENTER para continuar...");
+        Console.WriteLine("------------------------------------------");
 
 
         Caixa CaixaSelecionado = (Caixa)repositorioCaixa.SelecionarRegistroPorId(idCaixa);

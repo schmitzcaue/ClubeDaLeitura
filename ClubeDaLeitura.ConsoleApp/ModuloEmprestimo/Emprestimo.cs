@@ -9,33 +9,35 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 public class Emprestimo : EntidadeBase
 {
 
-    public Amigo amigo;
-    public Revista revista;
-    public DateTime dataEmprestimo;
-    public DateTime dataDevolucao;
+    public Amigo Amigo { get; set; }
+    public Revista Revista { get; set; }
+    public DateTime DataEmprestimo { get; set; }
+    public DateTime DataDevolucao { get; set; }
 
-    public Emprestimo(Amigo amigo, Revista revista ,DateTime dataEmprestimo)
+    public string Status { get; set; }
+
+    public Emprestimo(Amigo amigo, Revista revista)
     {
-        this.amigo = amigo;
-        this.revista = revista;
-        this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucao = dataEmprestimo.AddDays(revista.Caixa.DiasEmprestimo);
+        Amigo = amigo;
+        Revista = revista;
+        DataEmprestimo = DateTime.Now;
+        DataDevolucao = DataEmprestimo.AddDays(Revista.Caixa.DiasEmprestimo);
+        Status = "Aberto";
 
+        //if (dataEmprestimo > DateTime.Now)
+        //    revista.Status = "Reservada";
+        //else
+        //    revista.Status = "Emprestada";
 
-        if (dataEmprestimo > DateTime.Now)
-            revista.status = "Reservada";
-        else
-        revista.status = "Emprestada";
     }
     public override string Validar()
     {
-        string erros = "";
+        string erros = string.Empty;
 
-       
-        if (amigo == null)
+        if (Amigo == null)
             erros += "Amigo está vazio";
 
-        if (revista == null)
+        if (Revista == null)
             erros += "Revista está vazia";
 
         return erros;
@@ -43,7 +45,7 @@ public class Emprestimo : EntidadeBase
 
     public override void AtualizarRegistro(EntidadeBase registroAtualizado)
     {
-        return;
+        Status = "Concluído";
     }
 
     

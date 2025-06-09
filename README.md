@@ -1,4 +1,5 @@
 ## 📋 Funcionalidades
+![](.gif)
 ### Módulo de Amigos
 - **Cadastro:** Inserção de novos amigos com validação de nome, responsável e telefone.
 

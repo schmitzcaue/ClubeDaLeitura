@@ -37,9 +37,10 @@ public abstract class TelaBase
     public virtual void CadastrarRegistro()
     {
         Console.Clear();
-        ExibirCabecalho();
         Console.ForegroundColor = ConsoleColor.DarkBlue;
-        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"             Cadastro de {nomeEntidade}");
+        Console.Write("------------------------------------------");
         Console.ResetColor();
 
         Console.WriteLine();
@@ -66,24 +67,24 @@ public abstract class TelaBase
 
         repositorio.CadastrarRegistro(novoRegistro);
         Console.Clear();
-        Console.Write("------------------------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
-        Console.ResetColor();
-        Console.Write("------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("\nDigite ENTER para continuar...");
-        Console.ResetColor();
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"{nomeEntidade} cadastrado com sucesso!");
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
         Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
 
     }
 
     public virtual void EditarRegistro()
     {
         ExibirCabecalho();
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"        Edição de {nomeEntidade}");
+        Console.WriteLine("------------------------------------------");
 
-        Console.WriteLine($"Edição de {nomeEntidade}");
 
         Console.WriteLine();
 
@@ -91,6 +92,7 @@ public abstract class TelaBase
 
         Console.Write("Digite o id do registro que deseja selecionar: ");
         int idSelecionado = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
 
         Console.WriteLine();
 
@@ -100,13 +102,13 @@ public abstract class TelaBase
 
 
         Console.Clear();
-        Console.Write("------------------------------------------");
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine($"\n{nomeEntidade} editado com sucesso!");
+        Console.Write("------------------------------------------");
+        Console.WriteLine($"{nomeEntidade} editado com sucesso!");
+        Console.Write("------------------------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ResetColor();
-        Console.Write("------------------------------------------");
-        Console.WriteLine("\nDigite ENTER para continuar...");
-        Console.Write("------------------------------------------");
         Console.ReadLine();
     }
 
@@ -129,13 +131,14 @@ public abstract class TelaBase
 
         Console.Clear();
         Console.Write("------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine($"{nomeEntidade} excluído com sucesso!");
         Console.Write("------------------------------------------");
-        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.WriteLine("Digite ENTER para continuar...");
         Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
+
     }
 
     public abstract void VisualizarRegistros(bool exibirCabecalho);
@@ -147,8 +150,6 @@ public abstract class TelaBase
         Console.WriteLine("------------------------------------------");
         Console.WriteLine($"             Gestão de {nomeEntidade}s");
         Console.WriteLine("------------------------------------------");
-
-        Console.WriteLine();
         Console.ResetColor();
     }
 

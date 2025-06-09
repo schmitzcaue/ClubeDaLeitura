@@ -14,7 +14,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
     public DateTime AnoDePublicao { get; set; }
     public Caixa Caixa { get; set; }
 
-    public string status { get; set; }
+    public string Status { get; set; }
 
     public Revista(string titulo, int numeroDeEdicao, DateTime anoDePublicao, Caixa caixa) 
     {
@@ -23,7 +23,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
        AnoDePublicao = anoDePublicao;
        Caixa = caixa;
 
-        status = "Disponível";
+        Status = "Disponível";
     }
 
     public override void AtualizarRegistro(EntidadeBase registroAtualizado)
@@ -54,7 +54,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
         if (Caixa == null)
             erros += "Caixa está vazia";
 
-        if (status == null)
+        if (Status == null)
             erros += "Revista está emprestada";
 
         return erros;

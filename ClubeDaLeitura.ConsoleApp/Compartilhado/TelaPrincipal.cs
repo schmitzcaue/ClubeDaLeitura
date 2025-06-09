@@ -2,7 +2,7 @@
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
-using ClubeDaLeitura.ConsoleApp.ModuloReserva;
+//using ClubeDaLeitura.ConsoleApp.ModuloReserva;
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
 
@@ -14,7 +14,7 @@ public class TelaPrincipal
     private ModuloCaixa.RepositorioCaixa RepositorioCaixa;
     private ModuloRevista.RepositorioRevista RepositorioRevista;
     private ModuloEmprestimo.RepositorioEmprestimo RepositorioEmprestimo;
-    private ModuloReserva.RepositorioReserva RepositorioReserva;
+    //private ModuloReserva.RepositorioReserva RepositorioReserva;
 
     private TelaAmigo telaAmigo;
     private TelaCaixa telaCaixa;
@@ -27,7 +27,7 @@ public class TelaPrincipal
         RepositorioCaixa = new RepositorioCaixa();
         RepositorioRevista = new RepositorioRevista();
         RepositorioEmprestimo = new RepositorioEmprestimo();
-        RepositorioReserva = new RepositorioReserva();
+        //RepositorioReserva = new RepositorioReserva();
 
         telaAmigo = new TelaAmigo(RepositorioAmigo, RepositorioEmprestimo);
         telaCaixa = new TelaCaixa(RepositorioCaixa, RepositorioRevista);
@@ -52,7 +52,7 @@ public class TelaPrincipal
         Console.WriteLine("2 - Controle de Caixas");
         Console.WriteLine("3 - Controle de Revistas");
         Console.WriteLine("4 - Controle de Emprestimo");
-        Console.WriteLine("5 - Controle de Reservas");
+        //Console.WriteLine("5 - Controle de Reservas");
         Console.WriteLine("S - Sair");
         Console.ResetColor();
 

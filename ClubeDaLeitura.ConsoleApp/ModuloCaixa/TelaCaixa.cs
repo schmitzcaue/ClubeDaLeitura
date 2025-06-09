@@ -8,21 +8,19 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
  public class TelaCaixa : TelaBase
 {
     private RepositorioRevista repositorioRevista;
-
     public TelaCaixa(RepositorioCaixa repositorioAmigo, RepositorioRevista repositorioRevista)
         : base ("Caixa", repositorioAmigo)
     {
         this.repositorioRevista = repositorioRevista;
     }
-
     public override void CadastrarRegistro()
     {
         Console.Clear();
-        ExibirCabecalho();
-
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         Console.WriteLine("------------------------------------------");
-        Console.WriteLine($"Cadastro de {nomeEntidade}");
+        Console.WriteLine($"             Cadastro de {nomeEntidade}");
         Console.Write("------------------------------------------");
+        Console.ResetColor();
 
         Console.WriteLine();
 
@@ -74,59 +72,66 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
 
         repositorio.CadastrarRegistro(novoRegistro);
 
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("------------------------------------------");
         Console.WriteLine($"\n{nomeEntidade} cadastrado com sucesso!");
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
     }
+    //public override void EditarRegistro()
+    //{
+    //    ExibirCabecalho();
 
-    public override void EditarRegistro()
-    {
-        ExibirCabecalho();
+    //    Console.WriteLine($"Edição de {nomeEntidade}");
 
-        Console.WriteLine($"Edição de {nomeEntidade}");
+    //    Console.WriteLine();
 
-        Console.WriteLine();
+    //    VisualizarRegistros(false);
 
-        VisualizarRegistros(false);
+    //    Console.Write("Digite o id do registro que deseja selecionar: ");
+    //    int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Digite o id do registro que deseja selecionar: ");
-        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+    //    Console.WriteLine();
 
-        Console.WriteLine();
+    //    Caixa registroAtualizado = (Caixa)ObterDados();
 
-        Caixa registroAtualizado = (Caixa)ObterDados();
+    //    string erros = registroAtualizado.Validar();
 
-        string erros = registroAtualizado.Validar();
+    //    if (erros.Length > 0)
+    //    {
+    //        Console.WriteLine();
 
-        if (erros.Length > 0)
-        {
-            Console.WriteLine();
+    //        Console.ForegroundColor = ConsoleColor.Red;
+    //        Console.WriteLine(erros);
+    //        Console.ResetColor();
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(erros);
-            Console.ResetColor();
+    //        Console.Write("\nDigite ENTER para continuar...");
+    //        Console.ReadLine();
 
-            Console.Write("\nDigite ENTER para continuar...");
-            Console.ReadLine();
+    //        EditarRegistro();
 
-            EditarRegistro();
-
-            return;
-        }
-    }
-
-
+    //        return;
+    //    }
+    //}
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
             ExibirCabecalho();
 
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("------------------------------------------");
         Console.WriteLine("Visualização de Caixas");
+        Console.WriteLine("------------------------------------------");
 
         Console.WriteLine();
 
         Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+            "{0, -10} | {1, -20} | {2, -15} | {3, -15}",
             "Id", "Eiqueta", "Cor", "Dias de empréstimo"
         );
 
@@ -140,64 +145,72 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
                 continue;
 
             Console.WriteLine(
-               "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+               "{0, -10} | {1, -20} | {2, -15} | {3, -15}",
                 C.Id, C.Etiqueta, C.Cor, C.DiasEmprestimo
             );
         }
-        Console.Write("\nDigite ENTER para continuar...");
+        Console.WriteLine();
+        Console.Write("------------------------------------------");
+        Console.WriteLine("\nDigite ENTER para continuar...");
+        Console.Write("------------------------------------------");
         Console.ReadLine();
+        Console.ResetColor();
+        Console.Clear();
     }
-    public override void ExcluirRegistro()
-        {
-            ExibirCabecalho();
+    //public override void ExcluirRegistro()
+    //    {
+    //    ExibirCabecalho();
+    //    Console.Write("------------------------------------------");
+    //    Console.WriteLine($"Exclusão de {nomeEntidade}");
+    //    Console.Write("------------------------------------------");
 
-    Console.WriteLine($"Exclusão de {nomeEntidade}");
-            Console.WriteLine();
+    //    Console.WriteLine();
 
-             VisualizarRegistros(false);
+    //    VisualizarRegistros(false);
 
-    Console.Write("\nDigite o id do amigo que deseja excluir: ");
-            int idSelecionado = Convert.ToInt32(Console.ReadLine());
+    //Console.Write("\nDigite o id do amigo que deseja excluir: ");
+    //int idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-    // Verificar se há revistas vinculados
-    bool temRevistas = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
+    //bool temRevistas = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
 
-            if (temRevistas)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
-                Console.ResetColor();
-                Console.ReadLine();
-                return;
-            }
+    //        if (temRevistas)
+    //        {
+    //            Console.ForegroundColor = ConsoleColor.Red;
+    //            Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
+    //            Console.ResetColor();
+    //            Console.ReadLine();
+    //            return;
+    //        }
 
-            bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
+    //        bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
 
-            if (conseguiuExcluir)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-            }
-            else
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
-        }
+    //        if (conseguiuExcluir)
+    //        {
+    //            Console.ForegroundColor = ConsoleColor.Green;
+    //            Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
+    //        }
+    //        else
+    //    {
+    //        Console.ForegroundColor = ConsoleColor.Red;
+    //        Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
+    //    }
 
-            Console.ResetColor();
-            Console.ReadLine();
-       }
-
+    //        Console.ResetColor();
+    //        Console.ReadLine();
+    //   }
     protected override Caixa ObterDados()
     {
         Console.Write("Digite a etiqueta da Caixa: ");
         string Etiqueta = Console.ReadLine();
+        Console.WriteLine("------------------------------------------");
 
         Console.Write("Digite a cor da caixa: ");
         string Cor = Console.ReadLine();
+        Console.WriteLine("------------------------------------------");
 
-        Console.Write("Digite o tempo do empréstimo: ");
+        Console.Write("Digite o tempo do empréstimo (opcional): ");
         int DiasEmprestimo = Convert.ToInt32 (Console.ReadLine());
+        Console.WriteLine("------------------------------------------");
 
         Caixa caixa = new Caixa(Etiqueta, Cor, DiasEmprestimo);
 
