@@ -41,11 +41,7 @@ Microsoft Learn
 - **Visualização:** Exibição de empréstimos abertos e fechados, com destaque para os atrasados.
 
 ## Autor SCHMITZ.CAUE
-
-
-  <img src="https://github.com/user-attachments/assets/bea09985-5a7f-40ca-b0a6-6891c144a032" width="280" />
-  <h3 style="margin: 0;"><i>SCHMITZ.CAUE</i></h4>
-
+![](https://imgur.com/IlLOIQD.gif)
 
   <p>
     <a href="https://www.linkedin.com/in/cau%C3%AA-schmitz-316261356/">
