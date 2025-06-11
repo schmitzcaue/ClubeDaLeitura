@@ -186,7 +186,7 @@ public class TelaAmigo : TelaBase
         Console.WriteLine();
 
         Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -30} | {3, -15},  | {4, -15}",
+            "{0, -10} | {1, -20} | {2, -30} | {3, -15} | {4, -15}",
             "Id", "Nome", "Nome do responsável", "Telefone", "Multa Ativa"
         );
 
@@ -202,7 +202,7 @@ public class TelaAmigo : TelaBase
             if (A == null)
                 continue;
 
-            EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarRegistros();
+            EntidadeBase[] emprestimo = repositorioEmprestimo.SelecionarRegistros();
 
             for (int j = 0; j < emprestimos.Length; j++)
             {
@@ -221,7 +221,7 @@ public class TelaAmigo : TelaBase
 
                 if (A == e.Amigo && e.Multa != null)
                 {
-                    if (!e.Multa.EstaPaga)
+                    if (!e.MultaPaga)
                         amigoTemMultaAtiva = true;
                 }
             }
@@ -231,7 +231,7 @@ public class TelaAmigo : TelaBase
 
             Console.WriteLine(
                "{0, -10} | {1, -20} | {2, -30} | {3, -15} | {4, -15}",
-                A.Id, A.Nome, A.NomeResponsavel, A.Telefone
+                A.Id, A.Nome, A.NomeResponsavel, A.Telefone, stringMultaAtiva
             );
         }
         Console.WriteLine();

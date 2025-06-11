@@ -1,4 +1,5 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
+﻿using System;
+using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 
 namespace ClubeDaLeitura.ConsoleApp
@@ -38,6 +39,10 @@ namespace ClubeDaLeitura.ConsoleApp
 
                         case '3':
                             telaEmprestimo.CadastrarDevolucao();
+                            break;
+
+                        case '4':
+                            telaEmprestimo.PagarMultas();
                             break;
                     }
 

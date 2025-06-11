@@ -38,25 +38,38 @@ public class RepositorioEmprestimo : RepositorioBase
 
         return emprestimosAtivos;
     }
+    public EntidadeBase[] SelecionarEmprestimosComMulta()
+    {
+        int contadorEmprestimosComMulta = 0;
+
+        for (int i = 0; i<registros.Length; i++)
+        {
+            Emprestimo emprestimoAtual = (Emprestimo)registros[i];
+
+            if (emprestimoAtual == null)
+                continue;
+
+            if (emprestimoAtual.Status == "Aberto" && emprestimoAtual.Multa != null && !emprestimoAtual.MultaPaga)
+                contadorEmprestimosComMulta++;
+        }
+
+        Emprestimo[] emprestimosComMulta = new Emprestimo[contadorEmprestimosComMulta];
+
+    int contadorAuxiliar = 0;
+
+        for (int i = 0; i<registros.Length; i++)
+        {
+            Emprestimo emprestimoAtual = (Emprestimo)registros[i];
+
+            if (emprestimoAtual == null)
+                continue;
+
+            if (emprestimoAtual.Status == "Aberto" && emprestimoAtual.Multa != null && !emprestimoAtual.MultaPaga)
+            {
+                emprestimosComMulta[contadorAuxiliar++] = (Emprestimo) registros[i];
+            }
+        }
+
+        return emprestimosComMulta;
+    }
 }
-//using ClubeDaLeitura.ConsoleApp.Compartilhado;
-
-//namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
-
-//    public class RepositorioEmprestimo : RepositorioBase
-//{
-
-//    public bool ExisteEmprestimosVinculadas(int idAmigo)
-//    {
-//        EntidadeBase[] registros = SelecionarRegistros();
-
-//        foreach (EntidadeBase registro in registros)
-//        {
-//            if (registro is Emprestimo emprestimo && emprestimo.Amigo != null && emprestimo.Amigo.Id == idAmigo)
-//                return true;
-//        }
-
-//        return false;
-//    }
-
-//}
