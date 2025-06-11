@@ -116,22 +116,12 @@ public class TelaEmprestimo : TelaBase
     }
     public void CadastrarDevolucao()
     {
-        //Console.Clear();
-        //VisualizarRegistros(false);
-
-        //Console.Write("Digite o id do emprestimo: ");
-        //int IdEmprestimo = Convert.ToInt32(Console.ReadLine());
-        //Console.Clear();
-
-        //Emprestimo emprestimoSelecionado = (Emprestimo)repositorioEmprestimo.SelecionarRegistroPorId(IdEmprestimo);
-
-        //emprestimoSelecionado.DataDevolucao = DateTime.Now;
-
-        //emprestimoSelecionado.Revista.Status = "Disponível";
-
-        Console.WriteLine($"Devolução de {nomeEntidade}"); 
-
-        Console.WriteLine();
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine($"        Devolução de {nomeEntidade}");
+        Console.Write("------------------------------------------");
+        Console.ResetColor();
 
         VisualizarEmprestimosAtivos();
 
@@ -167,7 +157,16 @@ public class TelaEmprestimo : TelaBase
             emprestimoSelecionado.Status = "Concluído";
             emprestimoSelecionado.Revista.Status = "Disponível";
 
+           if  (DateTime.Now > emprestimoSelecionado.DataDevolucao)
+            {
+                TimeSpan diferencaDatas = DateTime.Now.Subtract(emprestimoSelecionado.DataDevolucao);
 
+                decimal valorMulta = 2.00m * diferencaDatas.Days;
+
+                Multa multa = new Multa(valorMulta);
+
+                emprestimoSelecionado.Multa = multa;    
+            }
 
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;

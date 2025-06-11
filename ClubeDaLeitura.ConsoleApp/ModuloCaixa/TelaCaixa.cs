@@ -82,41 +82,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         Console.ReadLine();
         Console.ResetColor();
     }
-    //public override void EditarRegistro()
-    //{
-    //    ExibirCabecalho();
-
-    //    Console.WriteLine($"Edição de {nomeEntidade}");
-
-    //    Console.WriteLine();
-
-    //    VisualizarRegistros(false);
-
-    //    Console.Write("Digite o id do registro que deseja selecionar: ");
-    //    int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-    //    Console.WriteLine();
-
-    //    Caixa registroAtualizado = (Caixa)ObterDados();
-
-    //    string erros = registroAtualizado.Validar();
-
-    //    if (erros.Length > 0)
-    //    {
-    //        Console.WriteLine();
-
-    //        Console.ForegroundColor = ConsoleColor.Red;
-    //        Console.WriteLine(erros);
-    //        Console.ResetColor();
-
-    //        Console.Write("\nDigite ENTER para continuar...");
-    //        Console.ReadLine();
-
-    //        EditarRegistro();
-
-    //        return;
-    //    }
-    //}
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
@@ -157,47 +122,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa;
         Console.ResetColor();
         Console.Clear();
     }
-    //public override void ExcluirRegistro()
-    //    {
-    //    ExibirCabecalho();
-    //    Console.Write("------------------------------------------");
-    //    Console.WriteLine($"Exclusão de {nomeEntidade}");
-    //    Console.Write("------------------------------------------");
-
-    //    Console.WriteLine();
-
-    //    VisualizarRegistros(false);
-
-    //Console.Write("\nDigite o id do amigo que deseja excluir: ");
-    //int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-    //bool temRevistas = repositorioRevista.ExistemRevistasVinculadas(idSelecionado);
-
-    //        if (temRevistas)
-    //        {
-    //            Console.ForegroundColor = ConsoleColor.Red;
-    //            Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
-    //            Console.ResetColor();
-    //            Console.ReadLine();
-    //            return;
-    //        }
-
-    //        bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
-
-    //        if (conseguiuExcluir)
-    //        {
-    //            Console.ForegroundColor = ConsoleColor.Green;
-    //            Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-    //        }
-    //        else
-    //    {
-    //        Console.ForegroundColor = ConsoleColor.Red;
-    //        Console.WriteLine($"\nErro ao tentar excluir o {nomeEntidade}.");
-    //    }
-
-    //        Console.ResetColor();
-    //        Console.ReadLine();
-    //   }
     protected override Caixa ObterDados()
     {
         Console.Write("Digite a etiqueta da Caixa: ");

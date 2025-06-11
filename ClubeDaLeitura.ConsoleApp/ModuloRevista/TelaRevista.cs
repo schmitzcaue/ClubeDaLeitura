@@ -116,8 +116,8 @@ public class TelaRevista : TelaBase
         int numeroDeEdicao = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("------------------------------------------");
 
-        Console.Write("Digite a data de publicação: ");
-        DateTime anoDePublicao = DateTime.Parse(Console.ReadLine());
+        Console.Write("Digite o ano da publicação da revista: ");
+        int anoDePublicao = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("------------------------------------------");
 
         VisualizarCaixas();

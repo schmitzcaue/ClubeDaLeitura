@@ -172,50 +172,6 @@ public class TelaAmigo : TelaBase
         Console.ResetColor();
         Console.ReadLine();
     }
-    //public override void ExcluirRegistro()
-    //{
-    //    ExibirCabecalho();
-
-    //    Console.Write("------------------------------------------");
-    //    Console.WriteLine($"Exclusão de {nomeEntidade}");
-    //    Console.Write("------------------------------------------");
-
-
-    //    Console.WriteLine();
-
-    //    VisualizarRegistros(false);
-
-    //    Console.Write("Digite o id do registro que deseja selecionar: ");
-    //    int idSelecionado = Convert.ToInt32(Console.ReadLine());
-
-
-    //    bool temEmprestimos = repositorioEmprestimo.ExisteEmprestimosVinculadas(idSelecionado);
-
-    //    if (temEmprestimos)
-    //    {
-    //        Console.ForegroundColor = ConsoleColor.Red;
-    //        Console.WriteLine("\nEste amigo possui empréstimos vinculados e não pode ser excluído.");
-    //        Console.ResetColor();
-    //        Console.ReadLine();
-    //        return;
-    //    }
-
-    //    bool conseguiuExcluir = repositorio.ExcluirRegistro(idSelecionado);
-
-    //    Console.WriteLine();
-
-    //    repositorio.ExcluirRegistro(idSelecionado);
-
-    //    Console.Clear();
-    //    Console.Write("------------------------------------------");
-    //    Console.ForegroundColor = ConsoleColor.Red;
-    //    Console.WriteLine($"\n{nomeEntidade} excluído com sucesso!");
-    //    Console.ResetColor();
-    //    Console.Write("------------------------------------------");
-    //    Console.WriteLine("\nDigite ENTER para continuar...");
-    //    Console.Write("------------------------------------------");
-    //    Console.ReadLine();
-    //}
     public override void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
@@ -230,11 +186,14 @@ public class TelaAmigo : TelaBase
         Console.WriteLine();
 
         Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
-            "Id", "Nome", "Nome do responsável", "Telefone"
+            "{0, -10} | {1, -20} | {2, -30} | {3, -15},  | {4, -15}",
+            "Id", "Nome", "Nome do responsável", "Telefone", "Multa Ativa"
         );
 
         EntidadeBase[] amigo = repositorio.SelecionarRegistros();
+
+        EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarRegistros();
+
 
         for (int i = 0; i < amigo.Length; i++)
         {
@@ -243,8 +202,35 @@ public class TelaAmigo : TelaBase
             if (A == null)
                 continue;
 
+            EntidadeBase[] emprestimos = repositorioEmprestimo.SelecionarRegistros();
+
+            for (int j = 0; j < emprestimos.Length; j++)
+            {
+                Emprestimo e = (Emprestimo)emprestimos[j];
+
+            }
+
+            bool amigoTemMultaAtiva = false;
+
+            for (int j = 0; j < emprestimos.Length; j++)
+            {
+                Emprestimo e = (Emprestimo)emprestimos[j];
+
+                if (e == null)
+                    continue;
+
+                if (A == e.Amigo && e.Multa != null)
+                {
+                    if (!e.Multa.EstaPaga)
+                        amigoTemMultaAtiva = true;
+                }
+            }
+
+            string stringMultaAtiva = amigoTemMultaAtiva ? "Sim" : "Não";
+
+
             Console.WriteLine(
-               "{0, -10} | {1, -20} | {2, -30} | {3, -15}",
+               "{0, -10} | {1, -20} | {2, -30} | {3, -15} | {4, -15}",
                 A.Id, A.Nome, A.NomeResponsavel, A.Telefone
             );
         }

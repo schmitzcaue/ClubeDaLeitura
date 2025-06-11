@@ -11,12 +11,12 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
     {
     public string Titulo { get; set; }
     public int NumeroDeEdicao { get; set; }
-    public DateTime AnoDePublicao { get; set; }
+    public int AnoDePublicao { get; set; }
     public Caixa Caixa { get; set; }
 
     public string Status { get; set; }
 
-    public Revista(string titulo, int numeroDeEdicao, DateTime anoDePublicao, Caixa caixa) 
+    public Revista(string titulo, int numeroDeEdicao, int anoDePublicao, Caixa caixa) 
     {
        Titulo = titulo;
        NumeroDeEdicao = numeroDeEdicao;
@@ -48,8 +48,8 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado;
         else if (NumeroDeEdicao < 0 )
             erros += "O numero da edição deve ser positivo!\n";
 
-        else if (AnoDePublicao > DateTime.Now)
-            erros += "O ano de publicação deve ter uma data válida!\n";
+        if (AnoDePublicao < DateTime.MinValue.Year || AnoDePublicao > DateTime.Now.Year)
+            erros += "O campo \"Ano de Publicação\" deve conter um valor válido no passado ou presente.";
 
         if (Caixa == null)
             erros += "Caixa está vazia";
